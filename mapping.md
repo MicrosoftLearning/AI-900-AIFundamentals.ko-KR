@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 69f8fd8920fccc0aecc4fb5d5a40e506935f8340
-ms.sourcegitcommit: 276908bd75615fb4d4712b912426129587e9c307
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 03/23/2022
-ms.locfileid: "140788224"
----
 # <a name="ai-900-trainer-lab-mapping"></a>AI-900 트레이너 랩 매핑
 
 이 과정, AI-900: AI Fundamentals에는 1일 과정에 맞게 조정된 강사 진행 교육용 랩 하위 집합이 있습니다.
