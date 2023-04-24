@@ -1,6 +1,7 @@
 ---
 lab:
   title: 이미지 분류 살펴보기
+  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-image-classification"></a>이미지 분류 살펴보기

@@ -1,6 +1,7 @@
 ---
 lab:
   title: 텍스트 분석 살펴보기
+  module: Module 4 - Natural Language Processing (NLP)
 ---
 
 # <a name="explore-text-analytics"></a>텍스트 분석 살펴보기

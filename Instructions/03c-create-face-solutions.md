@@ -1,6 +1,7 @@
 ---
 lab:
   title: 얼굴 인식 살펴보기
+  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-face-recognition"></a>얼굴 인식 살펴보기

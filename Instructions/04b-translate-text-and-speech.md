@@ -1,6 +1,7 @@
 ---
 lab:
   title: 번역 살펴보기
+  module: Module 4 - Natural Language Processing (NLP)
 ---
 
 # <a name="explore-translation"></a>번역 살펴보기

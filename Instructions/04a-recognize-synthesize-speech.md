@@ -1,6 +1,7 @@
 ---
 lab:
   title: 음성 살펴보기
+  module: Module 4 - Natural Language Processing (NLP)
 ---
 
 # <a name="explore-speech"></a>음성 살펴보기
