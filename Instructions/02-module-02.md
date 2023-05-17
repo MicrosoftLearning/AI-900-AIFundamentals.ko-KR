@@ -1,7 +1,6 @@
 ---
 lab:
   title: Azure ML에서 자동화된 Machine Learning 살펴보기
-  module: Module 2 - Machine Learning
 ---
 
 # <a name="explore-automated-machine-learning-in-azure-ml"></a>Azure ML에서 자동화된 Machine Learning 살펴보기

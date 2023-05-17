@@ -1,7 +1,6 @@
 ---
 lab:
   title: 언어 이해 살펴보기
-  module: Module 4 - Natural Language Processing (NLP)
 ---
 
 # <a name="explore-language-understanding"></a>언어 이해 살펴보기

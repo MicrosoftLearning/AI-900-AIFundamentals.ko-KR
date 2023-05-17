@@ -1,7 +1,6 @@
 ---
 lab:
   title: 광학 문자 인식 살펴보기
-  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-optical-character-recognition"></a>광학 문자 인식 살펴보기

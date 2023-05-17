@@ -1,7 +1,6 @@
 ---
 lab:
   title: 개체 감지 살펴보기
-  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-object-detection"></a>개체 감지 살펴보기

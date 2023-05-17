@@ -1,7 +1,6 @@
 ---
 lab:
   title: 질문 답변 살펴보기
-  module: Module 4 - Natural Language Processing (NLP)
 ---
 
 # <a name="explore-question-answering"></a>질문 답변 살펴보기

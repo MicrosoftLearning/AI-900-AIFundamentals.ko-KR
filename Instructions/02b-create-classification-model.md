@@ -1,7 +1,6 @@
 ---
 lab:
   title: Azure Machine Learning 디자이너를 사용하여 분류 살펴보기
-  module: Module 2 - Machine Learning
 ---
 
 # <a name="explore-classification-with-azure-machine-learning-designer"></a>Azure Machine Learning 디자이너를 사용하여 분류 살펴보기

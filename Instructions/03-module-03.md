@@ -1,7 +1,6 @@
 ---
 lab:
   title: Computer Vision 살펴보기
-  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-computer-vision"></a>Computer Vision 살펴보기

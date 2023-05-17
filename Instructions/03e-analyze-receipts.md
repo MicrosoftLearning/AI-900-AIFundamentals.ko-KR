@@ -1,7 +1,6 @@
 ---
 lab:
   title: 양식 인식 살펴보기
-  module: Module 3 - Computer Vision
 ---
 
 # <a name="explore-form-recognition"></a>양식 인식 살펴보기

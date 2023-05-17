@@ -1,7 +1,6 @@
 ---
 lab:
   title: 지식 마이닝 살펴보기
-  module: Module 5 - Conversational AI
 ---
 
 # <a name="explore-knowledge-mining"></a>지식 마이닝 살펴보기
