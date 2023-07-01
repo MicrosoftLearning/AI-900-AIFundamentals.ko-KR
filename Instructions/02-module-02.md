@@ -3,13 +3,13 @@ lab:
   title: Azure ML에서 자동화된 Machine Learning 살펴보기
 ---
 
-# <a name="explore-automated-machine-learning-in-azure-ml"></a>Azure ML에서 자동화된 Machine Learning 살펴보기
+# Azure ML에서 자동화된 Machine Learning 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
 이번 연습에서는 이전 자전거 대여 세부 정보를 포함하는 데이터 세트를 사용하여 계절 및 기상 특성에 따라 지정된 날짜에 예상되는 자전거 대여 수를 예측하는 모델을 학습시킵니다.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Azure Machine Learning 작업 영역 만들기  
+## Azure Machine Learning 작업 영역 만들기  
 
 1. Microsoft 자격 증명을 사용하여 [Azure Portal](https://portal.azure.com?azure-portal=true)에 로그인합니다.
 
@@ -27,17 +27,15 @@ lab:
 
 1. **Studio 시작**을 선택하거나 또는 새 브라우저 탭을 열고 [https://ml.azure.com](https://ml.azure.com?azure-portal=true)로 이동한 다음, Microsoft 계정을 사용하여 Azure Machine Learning 스튜디오에 로그인합니다.
 
-1. **현재 기계 학습 목표는 무엇인가요?** 메시지가 나타나면 **취소**를 선택합니다.
+1. 표시되는 모든 메시지를 닫습니다.
 
-1. **스튜디오 시작** 메시지가 표시되면 **X**를 선택합니다.
-
-1. Azure Machine Learning 스튜디오에서 새로 만든 작업 영역이 표시됩니다. 그렇지 않은 경우 왼쪽 메뉴에서 **Microsoft**를 클릭합니다. 그런 다음 새 왼쪽 메뉴에서 구독에 연결된 모든 작업 영역이 나열되는 **작업 영역**을 선택합니다. 이 연습을 위해 만든 항목을 선택합니다. 
+1. Azure Machine Learning 스튜디오에서 새로 만든 작업 영역이 표시됩니다. 그렇지 않은 경우 왼쪽 메뉴에서 Azure 디렉터리를 선택합니다. 그런 다음 새 왼쪽 메뉴에서 디렉터리에 연결된 모든 **작업 영역**이 나열된 작업 영역을 선택하고 이 연습에 대해 만든 작업 영역을 선택합니다.
 
 > **참고** 이 모듈은 [Microsoft Azure AI 기본 사항: 기계 학습을 위한 시각적 도구 살펴보기](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/) 학습 경로의 다른 모듈을 포함하여 Azure Machine Learning 작업 영역을 활용하는 여러 모듈 중 하나입니다. 고유한 Azure 구독을 사용하는 경우 작업 영역을 만든 후 다른 모듈에서 다시 사용하는 것이 좋습니다. 사용자의 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 Azure 구독에 약간의 데이터 스토리지 요금이 청구됩니다. 따라서 더 이상 필요하지 않은 경우 Azure Machine Learning 작업 영역을 삭제하는 것이 좋습니다.
 
-## <a name="create-compute"></a>컴퓨팅 만들기
+## 컴퓨팅 만들기
 
-1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true)에서 왼쪽 위에 있는 세 줄을 선택하여 인터페이스의 다양한 페이지를 봅니다(화면 크기를 최대화해야 할 수 있음). 왼쪽 창에서 해당 페이지를 사용하여 작업 영역에서 리소스를 관리할 수 있습니다. **컴퓨팅** 페이지(**관리** 아래)를 선택합니다.
+1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 왼쪽 위에 있는 **&#8801;** 아이콘(세 줄의 스택처럼 보이는 메뉴 아이콘)을 선택하여 인터페이스의 다양한 페이지를 봅니다(화면 크기를 최대화해야 할 수 있음). 왼쪽 창에서 해당 페이지를 사용하여 작업 영역에서 리소스를 관리할 수 있습니다. **컴퓨팅** 페이지(**관리** 아래)를 선택합니다.
 
 1. **컴퓨팅** 페이지에서 **컴퓨팅 클러스터** 탭을 선택하고 다음 설정으로 새 컴퓨팅 클러스터를 추가합니다. 이를 사용하여 기계 학습 모델을 학습합니다.
     - **위치**: 작업 영역과 동일한 위치를 선택합니다. 해당 위치가 나열되어 있지 않으면 가장 가까운 위치를 선택합니다.
@@ -51,18 +49,18 @@ lab:
     - **최소 노드 수**: 0
     - **최대 노드 수**: 2
     - **스케일 다운 전 유휴 시간(초)**: 120
-    - **SSH 액세스 사용**: 지우기
+    - **SSH 액세스 사용**: 사용하도록 설정 안 함
     - **만들기**를 선택합니다.
 
 > **참고**: 컴퓨팅 인스턴스 및 클러스터는 표준 Azure 가상 머신 이미지를 기반으로 합니다. 이 모듈에서는 비용 및 성능의 최적 균형을 달성하기 위해 *Standard_DS11_v2* 이미지를 권장합니다. 구독에 이 이미지를 포함하지 않는 할당량이 있는 경우 다른 이미지를 선택하세요. 하지만 이미지가 클수록 비용이 더 많이 들 수 있고 더 작은 이미지는 작업을 완료하기에 충분하지 않을 수 있습니다. 또는 Azure 관리자에게 할당량을 확장하도록 요청하세요.
 
 컴퓨팅 클러스터는 만들어지는 데 시간이 좀 걸립니다. 대기하는 동안 다음 단계로 이동할 수 있습니다.
 
-## <a name="create-a-dataset"></a>데이터 세트 만들기
+## 데이터 자산 만들기
 
 1. 웹 브라우저에서 [https://aka.ms/bike-rentals](https://aka.ms/bike-rentals?azure-portal=true)에 접속해 쉼표로 구분된 데이터를 확인합니다.
 
-1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 화면에서 왼쪽 위에 있는 세 줄을 선택하여 왼쪽 창을 확장합니다. **데이터** 페이지(**자산** 아래)를 봅니다. 데이터 페이지에는 Azure ML에서 사용할 특정 데이터 파일 또는 테이블이 있습니다. 이 페이지에서도 데이터 세트를 만들 수 있습니다.
+1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 화면 왼쪽 위에 있는 메뉴 아이콘을 선택하여 왼쪽 창을 확장합니다. **데이터** 페이지(**자산** 아래)를 봅니다. 데이터 페이지에는 Azure ML에서 사용할 특정 데이터 파일 또는 테이블이 있습니다. 이 페이지에서도 데이터 세트를 만들 수 있습니다.
 
 1. **데이터** 페이지의 **데이터 자산** 탭에서 **만들기**를 선택합니다. 그런 다음, 다음 설정을 사용하여 데이터 자산을 구성합니다.
     * **데이터 형식**:
@@ -90,11 +88,11 @@ lab:
 
 > **인용**: 이 데이터는 [Capital Bikeshare](https://www.capitalbikeshare.com/system-data)에서 파생되었으며 게시된 데이터 [사용권 계약](https://www.capitalbikeshare.com/data-license-agreement)에 따라 사용됩니다.
 
-## <a name="run-an-automated-machine-learning-job"></a>자동화된 Machine Learning 작업을 실행합니다.
+## 자동화된 Machine Learning 작업을 실행합니다.
 
 자동화된 기계 학습을 사용하여 자전거 대여를 예측하는 회귀 모델을 학습시키는 작업을 실행하는 다음 단계를 수행합니다.
 
-1. [Azure Machine Learning Studio](https://ml.azure.com?azure-portal=true)에서 **자동화된 ML** 페이지(**작성자**)를 확인합니다.
+1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) **자동화된 ML** 페이지(작성 아래)**를 봅니다**.
 
 1. 다음 설정을 사용하여 자동화된 ML 작업을 만듭니다.
     - **데이터 자산 선택**:
@@ -136,13 +134,12 @@ lab:
 
 1. 작업이 완료될 때까지 기다립니다. 시간이 걸릴 수도 있으므로 지금은 잠깐 쉬는 것이 좋을 수 있습니다.
 
-## <a name="review-the-best-model"></a>최적 모델 검토
+## 최적 모델 검토
 
 1. 자동화된 기계 학습 작업의 **개요** 탭에서 최적 모델 요약을 확인합니다.
     ![알고리즘 이름 주위에 상자가 있는 자동화된 기계 학습 작업의 최상의 모델 요약의 스크린샷](media/use-automated-machine-learning/complete-run.png)
 
-    >[!NOTE]
-    > “경고: 사용자가 지정한 종료 점수에 도달했습니다...”라는 상태의 메시지가 표시될 수 있습니다. 정상적인 메시지입니다. 다음 단계를 계속 진행하세요.  
+    > **참고** "경고: 사용자가 지정한 종료 점수에 도달했습니다..."상태 메시지가 표시될 수 있습니다. 정상적인 메시지입니다. 다음 단계를 계속 진행하세요.  
 1. 최적 모델의 **알고리즘 이름** 아래의 텍스트를 선택하여 세부 정보를 확인합니다.
 
 1. *정규화된 제곱 평균 오차* 값 옆에 있는 **다른 모든 메트릭 보기**를 선택하여 회귀 모델에 대한 가능한 다른 평가 메트릭 값을 확인합니다.
@@ -158,7 +155,7 @@ lab:
 
     ![설명 탭의 기능 중요도 차트의 스크린샷](media/use-automated-machine-learning/feature-importance.png)
 
-## <a name="deploy-a-predictive-service"></a>예측 서비스 배포
+## 예측 서비스 배포
 
 1. [Azure Machine Learning Studio](https://ml.azure.com?azure-portal=true)의 **자동화된 ML** 페이지에서 자동화된 기계 학습 작업을 선택합니다.
 
@@ -177,7 +174,7 @@ lab:
 1. Azure Machine Learning 스튜디오의 왼쪽 메뉴에서 **엔드포인트**를 선택합니다.
     ![왼쪽 메뉴의 엔드포인트 위치 스크린샷](media/use-automated-machine-learning/find-endpoints.png)
 
-## <a name="test-the-deployed-service"></a>배포된 서비스 테스트
+## 배포된 서비스 테스트
 
 이제 배포된 서비스를 테스트할 수 있습니다.
 
@@ -221,15 +218,14 @@ lab:
 
 **사용** 탭의 자격 증명을 사용하여 클라이언트 애플리케이션에 연결할 준비가 된 서비스를 방금 테스트했습니다. 여기서 랩을 종료합니다. 방금 배포한 서비스를 계속 실험해 볼 수 있습니다.
 
-## <a name="clean-up"></a>정리
+## 정리
 
-만든 웹 서비스는 *Azure Container Instance*에 호스트됩니다. 추가 실험 의사가 없는 경우 불필요한 Azure 사용이 발생하지 않도록 엔드포인트를 삭제해야 합니다. 또한 다시 필요로 하기 전까지 컴퓨팅 인스턴스를 중지해야 합니다.
+만든 웹 서비스는 *Azure Container Instance*에 호스트됩니다. 추가 실험 의사가 없는 경우 불필요한 Azure 사용이 발생하지 않도록 엔드포인트를 삭제해야 합니다. 컴퓨팅 클러스터도 삭제해야 합니다.
 
 1. [Azure Machine Learning Studio](https://ml.azure.com?azure-portal=true)의 **엔드포인트** 탭에서 **predict-rentals** 엔드포인트를 선택합니다. 그런 다음, **삭제**를 선택하고 엔드포인트를 삭제하겠다고 확인합니다.
-2. **컴퓨팅** 페이지의 **컴퓨팅 인스턴스** 탭에서 컴퓨팅 인스턴스를 선택한 다음 **중지**를 선택합니다.
+2. **컴퓨팅** 페이지의 **컴퓨팅 클러스터** 탭에서 컴퓨팅 instance 선택한 다음 **삭제**를 선택합니다.
 
->[!NOTE]
-> 컴퓨팅을 중지하면 컴퓨팅 리소스에 대한 구독 요금이 청구되지 않습니다. 그러나 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 약간의 데이터 스토리지 요금이 청구됩니다. Azure Machine Learning 탐색을 완료했으면 Azure Machine Learning 작업 영역 및 관련 리소스를 삭제할 수 있습니다. 그러나 이 시리즈의 다른 랩을 완료하려는 경우에는 다시 만들어야 합니다.
+> **참고** 컴퓨팅을 삭제하면 컴퓨팅 리소스에 대한 구독 요금이 청구되지 않습니다. 그러나 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 약간의 데이터 스토리지 요금이 청구됩니다. Azure Machine Learning 탐색을 완료했으면 Azure Machine Learning 작업 영역 및 관련 리소스를 삭제할 수 있습니다. 그러나 이 시리즈의 다른 랩을 완료하려는 경우에는 다시 만들어야 합니다.
 >
 > 작업 영역을 삭제하려면,
 > 1. [Azure Portal](https://portal.azure.com?azure-portal=true)의 **리소스 그룹** 페이지에서 Azure Machine Learning 작업 영역을 만들 때 지정한 리소스 그룹을 엽니다.

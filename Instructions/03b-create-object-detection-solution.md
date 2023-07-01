@@ -3,19 +3,19 @@ lab:
   title: 개체 감지 살펴보기
 ---
 
-# <a name="explore-object-detection"></a>개체 감지 살펴보기
+# 개체 감지 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
 개체 감지는 이미지에 있는 개체의 개별 인스턴스를 분류하고, 해당 위치를 표시하는 경계 상자를 나타내도록 기계 학습 모델을 학습시키는 Computer Vision의 한 형태입니다. 이를 이미지 분류(모델이 “이것이 무슨 이미지인가요?”라는 질문에 답변함)에서 모델에 “이 이미지에 있는 개체는 무엇이며, 어디에 있나요?”라고 질문할 수 있는 솔루션 빌드에 이르는 진행 과정으로 생각할 수 있습니다.
 
-예를 들어 식료품 매장은 개체 감지 모델을 사용하여 카메라로 컨베이어 벨트를 스캔하며 각 품목을 벨트에 놓고 개별적으로 스캔할 필요 없이 특정 품목을 식별할 수 있는 자동화된 체크 아웃 시스템을 구현할 수 있습니다.
+예를 들어 도로 안전 이니셔티브는 보행자와 자전거를 교통 교차로에서 가장 취약한 도로 사용자로 식별할 수 있습니다. 카메라를 사용하여 교차로를 모니터링함으로써 도로 사용자의 이미지를 분석하여 보행자와 자전거를 감지하여 숫자를 모니터링하거나 교통 신호의 동작을 변경할 수 있습니다.
 
-Microsoft Azure의 **Custom Vision** Cognitive Service는 사용자 지정 개체 감지 모델을 만들고 게시하기 위한 클라우드 기반 솔루션을 제공합니다. Azure에서는 Custom Vision 서비스를 사용하여 기존 이미지를 기준으로 이미지 분류 모델을 학습시킬 수 있습니다. 이미지 분류 솔루션을 만들기 위한 요소에는 두 가지가 있습니다. 먼저 기존 이미지를 사용하여 다른 클래스를 인식하도록 모델을 학습시켜야 합니다. 그런 다음, 모델이 학습되면 애플리케이션에서 사용할 수 있는 서비스로 게시해야 합니다.
+Microsoft Azure의 **Custom Vision** Cognitive Service는 사용자 지정 개체 감지 모델을 만들고 게시하기 위한 클라우드 기반 솔루션을 제공합니다. Azure에서는 Custom Vision 서비스를 사용하여 기존 이미지를 기반으로 개체 검색 모델을 학습시킬 수 있습니다. 개체 감지 솔루션을 만드는 데는 두 가지 요소가 있습니다. 먼저 레이블이 지정된 이미지를 사용하여 개체의 위치 및 클래스를 감지하도록 모델을 학습시켜야 합니다. 그런 다음, 모델이 학습되면 애플리케이션에서 사용할 수 있는 서비스로 게시해야 합니다.
 
-Custom Vision 서비스의 기능을 테스트하여 이미지의 개체를 감지하려면 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
+Custom Vision 서비스의 기능을 테스트하여 이미지의 개체를 감지하려면 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 동일한 원칙과 기능이 웹 사이트 또는 모바일 앱과 같은 실제 솔루션에 적용됩니다.
 
-## <a name="create-a-cognitive-services-resource"></a>*Cognitive Services* 리소스 만들기
+## *Cognitive Services* 리소스 만들기
 
 **Custom Vision** 리소스 또는 **Cognitive Services** 리소스를 생성하여 Custom Vision 서비스를 사용할 수 있습니다.
 
@@ -37,131 +37,134 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 1. Cognitive Services 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
-## <a name="create-a-custom-vision-project"></a>Custom Vision 프로젝트 만들기
+## Custom Vision 프로젝트 만들기
 
 개체 감지 모델을 학습시키려면 학습 리소스에 따라 Custom Vision 프로젝트를 만들어야 합니다. 이렇게 하려면 Custom Vision 포털을 사용합니다.
 
 1. 새 브라우저 탭에서 [https://customvision.ai](https://customvision.ai?azure-portal=true)의 Custom Vision 포털을 열고 Azure 구독과 연관된 Microsoft 계정을 사용하여 로그인합니다.
 
 1. 다음 설정을 사용하여 새 프로젝트를 만듭니다.
-    - **이름**: 식료품 감지
-    - **설명**: 식료품에 대한 개체 감지
+    - **이름**: 교통 안전
+    - **설명**: 도로 안전을 위한 개체 감지.
     - **리소스**: 이전에 만든 리소스
     - **프로젝트 형식**: 개체 감지
-    - **도메인**: 일반
+    - **도메인**: 일반 \[A1]
 
 1. 프로젝트가 만들어지고 브라우저에서 열릴 때까지 기다립니다.
 
-## <a name="add-and-tag-images"></a>이미지 추가 및 태그 지정
+## 이미지 추가 및 태그 지정
 
 개체 감지 모델을 학습시키려면 모델이 식별할 클래스가 포함된 이미지를 업로드하고, 태그를 지정하여 각 개체 인스턴스에 대한 경계 상자를 나타내야 합니다.
 
-1. https://aka.ms/fruit-objects에서 학습 이미지를 다운로드하고 압축을 풉니다. 압축을 푼 폴더에는 과일 이미지 컬렉션이 포함되어 있습니다.
+1. 에서 [https://aka.ms/traffic-images](https://aka.ms/traffic-images)학습 이미지를 다운로드하고 추출합니다. 추출된 폴더에는 자전거 운전자와 보행자의 이미지 컬렉션이 포함되어 있습니다.
 
-1. Custom Vision 포털에서 [https://customvision.ai](https://customvision.ai?azure-portal=true) 개체 감지 프로젝트 식료품 감지에서 작업하고 있는지 확인합니다. 그런 다음, **이미지 추가**를 선택하고 압축을 푼 폴더의 모든 이미지를 업로드합니다.
+1. Custom Vision 포털의 **Traffic Safety** 개체 검색 프로젝트에서 **이미지 추가**를 선택하고 추출된 폴더에 모든 이미지를 업로드합니다.
 
-    ![이미지 추가를 클릭하여 다운로드한 이미지를 업로드합니다.](media/create-object-detection-solution/fruit-upload.jpg)
+    ![Custom Vision Studio의 이미지 업로드 대화 상자 스크린샷](media/create-object-detection-solution/upload-images.png)
 
 1. 이미지를 업로드한 후 첫 번째 이미지를 선택하여 엽니다.
 
-1. 자동으로 감지된 영역이 아래 이미지와 같이 표시될 때까지 이미지의 개체 위에 마우스를 놓고 있습니다. 그런 다음, 개체를 선택하고 필요한 경우 영역의 크기를 조정하여 개체를 둘러싸도록 합니다.
+1. 자동으로 검색된 영역이 표시될 때까지 이미지의 모든 개체(자전거 또는 보행자)에 마우스를 놓습니다. 그런 다음, 개체를 선택하고 필요한 경우 영역의 크기를 조정하여 개체를 둘러싸도록 합니다. 또는 단순히 개체를 주변을 끌어 영역을 만들 수 있습니다.
 
-    ![개체의 기본 영역](media/create-object-detection-solution/object-region.jpg)
+    사각형 영역 내에서 개체를 단단히 선택하면 개체에 적절한 태그(*자전거* 또는 *보행자*)를 입력하고 **태그 영역** (**+**) 단추를 사용하여 프로젝트에 태그를 추가합니다.
 
-    또는 단순히 개체를 주변을 끌어 영역을 만들 수 있습니다.
+    ![이미지 Detaol 대화 상자에서 태그가 지정된 영역이 있는 이미지의 스크린샷](media/create-object-detection-solution/tag-image.png)
 
-1. 영역이 개체를 둘러싸는 경우 다음과 같이 적절한 개체 유형(*apple*, *banana* 또는 *orange*)의 새 태그를 추가합니다.
+1. 오른쪽의 **다음** (**>)** 링크를 사용하여 다음 이미지로 이동하고 해당 개체에 태그를 지정합니다. 그런 다음 전체 이미지 컬렉션을 계속 작업하고 각 자전거 타는 사람 및 보행자에게 태그를 지정합니다.
 
-    ![이미지에서 태그가 지정된 개체](media/create-object-detection-solution/object-tag.jpg)
+    이미지에 태그를 지정할 때 다음 사항에 유의하세요.
 
-1. 이미지에서 서로 다른 개체를 선택하고 태그를 지정하여 영역 크기를 조정하고 필요에 따라 새 태그를 추가합니다.
+    - 일부 이미지에는 여러 개체가 포함되어 있으며, 잠재적으로 형식이 다를 수 있습니다. 겹치는 경우에도 각 태그에 태그를 지정합니다.
+    - 태그를 한 번 입력한 후에는 새 개체에 태그를 지정할 때 목록에서 태그를 선택할 수 있습니다.
+    - 이미지를 앞뒤로 이동하여 태그를 조정할 수 있습니다.
 
-    ![이미지에서 태그가 지정된 두 개의 개체](media/create-object-detection-solution/object-tags.jpg)
-
-1. 오른쪽의 **>** 링크를 사용하여 다음 이미지로 이동하고 해당 개체에 태그를 지정합니다. 그런 다음, 전체 이미지 컬렉션으로 계속 작업하고 각각에 apple, apple 및 orange 태그를 지정합니다.
+    ![이미지 Detaol 대화 상자에서 태그가 지정된 영역이 있는 이미지의 스크린샷](media/create-object-detection-solution/multiple-objects.png)
 
 1. 마지막 이미지에 태그를 지정했으면 **이미지 세부 정보** 편집기를 닫고 **학습 이미지** 페이지의 **태그** 아래에서 **태그가 지정됨**을 선택하여 태그가 지정된 이미지를 모두 확인합니다.
 
-    ![프로젝트의 태그가 지정된 이미지](media/create-object-detection-solution/tagged-images.jpg)
+    ![프로젝트의 태그가 지정된 이미지의 스크린샷](media/create-object-detection-solution/tagged-images.png)
 
-## <a name="train-and-test-a-model"></a>모델 학습 및 테스트
+## 모델 학습 및 테스트
 
 프로젝트의 이미지에 태그를 지정했으므로 이제 모델을 학습시킬 준비가 되었습니다.
 
 1. Custom Vision 프로젝트에서 **학습**을 클릭하여 태그가 지정된 이미지로 개체 감지 모델을 학습시킵니다. **빠른 학습** 옵션을 선택합니다.
 
-1. 학습이 완료될 때까지 기다린 다음(10분 정도 걸릴 수 있음), 정밀도, 재현율 및 *mAP* 성능 메트릭을 검토합니다. 이러한 메트릭은 개체 감지 모델의 예측 정확도를 측정하며 모두 높게 나타납니다.
+    > **팁**: 교육은 몇 분 정도 걸릴 수 있습니다. 기다리는 동안 도로 안전 개선 이니셔티브에서 컴퓨터 비전을 사용하는 실제 프로젝트를 설명하는 [스마트 도시를 위한 비디오 분석을](https://www.microsoft.com/research/video/video-analytics-for-smart-cities/) 검사.
 
-1. 페이지의 오른쪽 위에서 **빠른 테스트**를 클릭한 다음, **이미지 URL** 상자에 `https://aka.ms/apple-orange`를 입력하고 생성되는 예측을 확인합니다. 그런 다음, **빠른 테스트** 창을 닫습니다.
+2. 학습이 완료되면 *정밀도*, *재현율* 및 *mAP* 성능 메트릭을 검토합니다. 이러한 메트릭은 개체 감지 모델의 예측 성능을 측정하며 모두 합리적으로 높아야 합니다.
 
-## <a name="publish-the-object-detection-model"></a>개체 감지 모델 게시
+3. 왼쪽에서 **확률 임계값** 을 조정하여 50%에서 90%로 늘리고 성능 메트릭에 미치는 영향을 관찰합니다. 이 설정은 각 태그 평가가 예측으로 계산되기 위해 충족하거나 초과해야 하는 확률 값을 결정합니다.
+
+    ![학습된 모델의 성능 메트릭 스크린샷](media/create-object-detection-solution/performance-metrics.png)
+
+4. 페이지 오른쪽 위에서 **빠른 테스트를** 클릭한 다음 **이미지 URL** 상자에서 결과를 입력 `https://aka.ms/pedestrian-cyclist` 하고 확인합니다.
+
+    오른쪽 창의 **예측**에서 검색된 각 개체는 태그와 확률로 나열됩니다. 각 개체를 선택하여 이미지에서 강조 표시된 것을 확인합니다.
+
+    예측된 물체가 모두 올바르지 않을 수도 있습니다 - 결국 자전거와 보행자는 많은 공통 기능을 공유합니다. 모델이 가장 신뢰하는 예측은 확률 값이 가장 높습니다. **임계값** 슬라이더를 사용하여 확률이 낮은 개체를 제거합니다. 올바른 예측만 포함되는 지점을 찾을 수 있어야 합니다(아마도 약 85~90%).
+
+    ![학습된 모델의 성능 메트릭 스크린샷](media/create-object-detection-solution/test-detection.png)
+
+5. 그런 다음, **빠른 테스트** 창을 닫습니다.
+
+## 개체 감지 모델 게시
 
 이제 학습된 모델을 게시하고 클라이언트 애플리케이션에서 사용할 준비가 되었습니다.
 
 1. **&#128504; 게시**를 클릭하여 다음 설정으로 학습된 모델을 게시합니다.
-    - **모델 이름**: detect-produce
+    - **모델 이름**: 트래픽 안전
     - **예측 리소스**: 이전에 만든 리소스
 
-1. 게시한 후 예측 URL(&#127760;) 아이콘을 클릭하여 게시된 모델을 사용하는 데 필요한 정보를 볼 수 있습니다. 나중에 이미지 URL에서 예측을 가져오기 위해 적절한 URL 및 Prediction-Key 값이 필요하므로 이 대화 상자를 열어 두고 다음 작업을 수행합니다.
+1. 게시한 후 예측 URL(&#127760;) 아이콘을 클릭하여 게시된 모델을 사용하는 데 필요한 정보를 볼 수 있습니다.
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+    ![예측 URL의 스크린샷](media/create-object-detection-solution/prediction-url.png)
 
-Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
+나중에 이미지 URL에서 예측을 가져오기 위해 적절한 URL 및 Prediction-Key 값이 필요하므로 이 대화 상자를 열어 두고 다음 작업을 수행합니다.
 
-1. Azure Portal에서 검색 상자 오른쪽 페이지 맨 위에 있는 **[>_]**(*Cloud Shell*) 단추를 선택합니다. 그러면 포털 아래쪽에 Cloud Shell 창이 열립니다. 
+## 클라이언트 애플리케이션 준비
 
-    ![맨 위 검색 상자 오른쪽에 있는 아이콘을 클릭하여 Cloud Shell을 시작합니다.](media/create-object-detection-solution/powershell-portal-guide-1.png)
+Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 클라우드 셸에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
 
-1. Cloud Shell을 처음 열면 사용할 셸 유형(*Bash* 또는 *PowerShell*)을 선택하라는 메시지가 표시될 수 있습니다. **PowerShell**을 선택합니다. 이 옵션이 표시되지 않으면 단계를 건너뜁니다.  
+1. Azure Portal 포함된 브라우저 탭으로 다시 전환하고 검색 상자 오른쪽에 있는 페이지 맨 위에 있는 **Cloud Shell**(**[>_]**) 단추를 선택합니다. 그러면 포털 아래쪽에 클라우드 셸 창이 열립니다.
 
-1. Cloud Shell에 대한 스토리지를 만들라는 메시지가 표시되면 구독이 지정되었는지 확인하고 **스토리지 만들기**를 선택합니다. 그런 다음, 스토리지가 만들어질 때까지 1분 정도 기다립니다.
+    Cloud Shell을 처음 열면 사용할 셸 유형(*Bash* 또는 *PowerShell*)을 선택하라는 메시지가 표시될 수 있습니다. 그렇다면 **PowerShell**을 선택합니다.
 
-    ![확인을 클릭하여 스토리지를 만듭니다.](media/create-object-detection-solution/powershell-portal-guide-2.png)
+    Cloud Shell 대한 스토리지를 만들라는 메시지가 표시되면 구독이 선택되어 있는지 확인하고 **스토리지 만들기**를 선택합니다. 그런 다음, 스토리지가 만들어질 때까지 1분 정도 기다립니다.
 
-1. Cloud Shell 창의 왼쪽 위에 표시된 셸 형식이 *PowerShell*로 전환되었는지 확인합니다. *Bash*인 경우 드롭다운 메뉴를 사용하여 *PowerShell*로 전환합니다.
+    클라우드 셸이 준비되면 다음과 유사하게 표시됩니다.
+    
+    ![Azure Portal 클라우드 셸의 스크린샷](media/create-object-detection-solution/cloud-shell.png)
 
-    ![PowerShell로 전환하기 위해 왼쪽 드롭다운 메뉴를 찾는 방법](media/create-object-detection-solution/powershell-portal-guide-3.png) 
+    > **팁**: Cloud Shell 창의 왼쪽 위에 표시된 셸 유형이 *PowerShell*인지 확인합니다. *Bash*인 경우 드롭다운 메뉴를 사용하여 *PowerShell*로 전환합니다.
 
-1. PowerShell이 시작될 때까지 기다립니다. Azure Portal에 다음 화면이 표시되어야 합니다.  
+    창 맨 위에 있는 구분 기호 막대를 끌거나 창 오른쪽 위에 있는 **&#8212;** , **&#9723;** 및 **X** 아이콘을 사용하여 Cloud Shell 크기를 조정하여 창을 최소화, 최대화하고 닫을 수 있습니다. Azure Cloud Shell 사용에 관한 자세한 내용은 [Azure Cloud Shell 설명서](https://docs.microsoft.com/azure/cloud-shell/overview)를 참조하세요.
 
-    ![PowerShell이 시작될 때까지 기다립니다.](media/create-object-detection-solution/powershell-prompt.png) 
-
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
-
-이제 사용자 지정 모델이 생성되었으므로 Custom Vision 서비스를 사용하여 이미지의 개체를 감지하는 간단한 클라이언트 애플리케이션을 실행할 수 있습니다.
-
-1. 명령 셸에서 다음 명령을 입력하여 샘플 애플리케이션을 다운로드하고 ai-900이라는 폴더에 저장합니다.
+2. 명령 셸에서 다음 명령을 입력하여 이 연습의 파일을 다운로드하고 **ai-900** 이라는 폴더에 저장합니다(이미 있는 경우 해당 폴더를 제거한 후).
 
     ```PowerShell
+    rm -r ai-900 -f
     git clone https://github.com/MicrosoftLearning/AI-900-AIFundamentals ai-900
     ```
 
-    >**참고** 다른 랩에서 이미 이 명령을 사용하여 *ai-900* 리포지토리를 복제했다면 이 단계를 건너뛰어도 됩니다.
-
-1. 파일은 **ai-900**이라는 폴더에 다운로드됩니다. 이제 Cloud Shell 스토리지에 있는 모든 파일을 보고 작업하려고 합니다. 셸에 다음 명령을 입력합니다.
+3. 파일을 다운로드한 후 다음 명령을 입력하여 **ai-900** 디렉터리로 변경하고 이 연습의 코드 파일을 편집합니다.
 
     ```PowerShell
-    code .
+    cd ai-900
+    code detect-objects.ps1
     ```
 
-    그러면 아래 이미지와 같은 편집기가 열립니다. 
+    이렇게 하면 아래 이미지와 같은 편집기가 열립니다.
 
-    ![코드 편집기.](media/create-object-detection-solution/powershell-portal-guide-4.png)
+     ![클라우드 셸의 코드 편집기 스크린샷](media/create-object-detection-solution/code-editor.png)
 
-1. 왼쪽의 **파일** 창에서 **ai-900**을 확장하고 **detect-objects.ps1**을 선택합니다. 이 파일에는 다음과 같이 Custom Vision 서비스를 사용하여 개체를 이미지로 감지하는 일부 코드가 포함되어 있습니다.
+     > **팁**: 클라우드 셸 명령줄과 코드 편집기 사이에 구분 기호 막대를 사용하여 창의 크기를 조정할 수 있습니다.
 
-    ![이미지의 항목을 감지하는 코드가 포함된 편집기](media/create-object-detection-solution/detect-image-code.png)
+4. 코드의 세부 정보에 대해 너무 걱정하지 마세요. 중요한 점은 Custom Vision 모델의 예측 URL과 키를 지정하는 일부 코드로 시작된다는 것입니다. 나머지 코드에서 모델을 사용하도록 업데이트해야 합니다.
 
-1. 코드의 세부 사항에 대해 너무 걱정하지 마세요. 중요한 점은 이미지 URL을 사용할 때 Custom Vision 모델에 대한 예측 URL과 키가 필요하다는 것입니다. 
+    Custom Vision 프로젝트의 브라우저 탭에서 열어 놓은 대화 상자에서 *예측 URL* 및 *예측 키를* 가져옵니다. *이미지 URL*이 있는 경우 버전을 사용해야 합니다.
 
-    Custom Vision 프로젝트의 대화 상자에서 예측 URL을 가져옵니다. 
-
-    >**참고** 이미지 분류 모델을 게시한 후 예측 URL을 검토했습니다. 예측 URL을 찾으려면 프로젝트에서 **성능** 탭으로 이동한 다음, **예측 URL**을 클릭합니다(화면이 압축된 경우 지구본 아이콘만 표시될 수 있음). 대화 상자가 나타납니다. **이미지 URL이 있는 경우**에 대한 URL을 복사합니다. 
-    >              코드 편집기에 붙여넣어. **YOUR_PREDICTION_URL**를 바꿉니다. 
-
-    동일한 대화 상자를 사용하여 *예측 키*를 가져옵니다. *Prediction-Key 헤더 설정* 이후에 표시되는 예측 키를 복사합니다. **YOUR_PREDICTION_KEY**를 자리 표시자 값으로 바꾸어 코드 편집기에 붙여넣습니다. 
-
-    ![예측 URL의 스크린샷](media/create-object-detection-solution/find-prediction-url.png)
+    이러한 값을 사용하여 코드 파일의 **YOUR_PREDICTION_URL** 및 **YOUR_PREDICTION_KEY** 자리 표시자를 바꿉니다.
 
     예측 URL 및 예측 키 값을 붙여넣으면 코드의 처음 두 줄이 다음과 유사하게 표시됩니다.
 
@@ -170,21 +173,36 @@ Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud Shell
     $predictionKey ="1a2b3c4d5e6f7g8h9i0j...."
     ```
 
-1. 편집기 창의 오른쪽 위에서 **...** 단추를 사용하여 메뉴를 열고 **저장**을 선택하여 변경 내용을 저장합니다. 그런 다음, 메뉴를 다시 열고 **편집기 닫기**를 선택합니다.
+5. 코드에서 변수를 변경한 후 **Ctrl+S** 를 눌러 파일을 저장합니다. 그런 다음 **Ctrl+Q** 를 눌러 코드 편집기를 닫습니다.
 
-    샘플 클라이언트 애플리케이션을 사용하여 이 이미지의 개체를 감지합니다.
+## 클라이언트 애플리케이션 이름
 
-    ![과일 이미지](media/create-object-detection-solution/produce.jpg)
+이제 샘플 클라이언트 애플리케이션을 사용하여 이미지에서 자전거 운전자와 보행자를 감지할 수 있습니다.
 
 1. PowerShell 창에서 다음 명령을 입력하여 코드를 실행합니다.
 
     ```PowerShell
-    cd ai-900
-    ./detect-objects.ps1 
+    ./detect-objects.ps1 1
     ```
 
-1. 예측을 검토합니다. 예측은 *apple orange banana*여야 합니다.
+    이 코드는 모델을 사용하여 다음 이미지의 개체를 검색합니다.
 
-## <a name="learn-more"></a>자세한 정보
+    ![보행자와 자전거 타는 사람의 사진.](media/create-object-detection-solution/road-safety-1.jpg)
 
-이 간단한 앱은 Custom Vision 서비스의 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Custom Vision 페이지](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)를 참조하세요.
+1. 해당 위치 주변의 경계 상자 좌표와 함께 90% 이상의 확률로 검색된 개체를 나열하는 예측을 검토합니다.
+
+1. 이제 다른 이미지를 사용해 보겠습니다. 다음 명령을 실행합니다.
+
+    ```PowerShell
+    ./detect-objects.ps1 2
+    ```
+
+    이번에는 다음 이미지를 분석합니다.
+
+    ![보행자 그룹의 사진.](media/create-object-detection-solution/road-safety-2.jpg)
+
+개체 감지 모델이 테스트 이미지에서 보행자와 자전거를 감지하는 데 좋은 역할을 했으면 합니다.
+
+## 자세한 정보
+
+이 연습에서는 Custom Vision 서비스의 기능 중 일부만 보여줍니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Custom Vision 페이지](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)를 참조하세요.

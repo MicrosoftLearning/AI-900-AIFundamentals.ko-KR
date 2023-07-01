@@ -3,7 +3,7 @@ lab:
   title: 지식 마이닝 살펴보기
 ---
 
-# <a name="explore-knowledge-mining"></a>지식 마이닝 살펴보기
+# 지식 마이닝 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
@@ -18,7 +18,7 @@ lab:
 - 검색 인덱스 쿼리
 - 지식 저장소에 저장된 결과 검토
 
-## <a name="azure-resources-needed"></a>Azure 리소스 필요
+## Azure 리소스 필요
 
 Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스가 필요합니다.
 
@@ -29,7 +29,7 @@ Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스�
 
 - Blob 컨테이너가 있는 **스토리지 계정**으로, 원시 문서와 기타 테이블, 개체 또는 파일 컬렉션을 저장합니다.
 
-### <a name="create-an-azure-cognitive-search-resource"></a>*Azure Cognitive Search* 리소스 만들기
+### *Azure Cognitive Search* 리소스 만들기
 
 1. 로그인은 [Azure 포털](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true)합니다.
 
@@ -45,7 +45,7 @@ Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스�
 
 1. 배포가 완료되면 **리소스로 이동**을 선택합니다. Azure Cognitive Search 개요 페이지에서 인덱스를 추가하고, 데이터를 가져오고, 만든 인덱스를 검색할 수 있습니다.
 
-### <a name="create-a-cognitive-services-resource"></a>Cognitive Services 리소스 만들기
+### Cognitive Services 리소스 만들기
 
 Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Services** 리소스를 프로비전해야 합니다. 검색 솔루션은 이 리소스를 사용하여 AI에서 생성된 인사이트를 사용하여 데이터 저장소의 데이터를 보강합니다.
 
@@ -61,7 +61,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. 배포가 완료될 때까지 기다렸다가 배포 세부 정보를 확인합니다.
 
-### <a name="create-a-storage-account"></a>스토리지 계정 만들기
+### 스토리지 계정 만들기
 
 1. Azure Portal 홈페이지로 돌아가서 **+ 리소스 만들기** 단추를 선택합니다.
 
@@ -75,7 +75,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. **검토**를 클릭한 다음, **만들기**를 클릭합니다. 배포가 완료될 때까지 기다린 다음, 배포된 리소스로 이동합니다.
 
-## <a name="upload-documents-to-azure-storage"></a>Azure Storage에 문서 업로드
+## Azure Storage에 문서 업로드
 
 1. 만든 Azure Storage 계정의 왼쪽 메뉴 창에서 **컨테이너**를 선택합니다.
 
@@ -102,7 +102,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. 업로드가 완료되면 **Blob 업로드** 창을 닫을 수 있습니다. 이제 문서가 *coffee-reviews* 스토리지 컨테이너에 있습니다.
 
-## <a name="index-the-documents"></a>문서 인덱싱
+## 문서 인덱싱
 
 스토리지에 문서가 있으면 Azure Cognitive Search를 사용하여 문서에서 인사이트를 추출할 수 있습니다. Azure Portal에서는 데이터 가져오기 마법사를 제공합니다. 이 마법사를 사용하면 지원되는 데이터 원본에 대한 인덱스 및 인덱서가 자동으로 만들어질 수 있습니다. 마법사를 사용하여 인덱스를 만들고 스토리지에서 Azure Cognitive Search 인덱스로 검색 문서를 가져옵니다.
 
@@ -190,7 +190,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
     ![coffee-indexer 인덱서가 성공적으로 생성되었음을 보여 주는 스크린샷.](media/create-cognitive-search-solution/6a-search-indexer-success.png)
 
-## <a name="query-the-index"></a>인덱스 쿼리
+## 인덱스 쿼리
 
 검색 탐색기를 사용하여 쿼리를 작성하고 테스트합니다. Search 탐색기는 Azure Portal에 기본 제공되는 도구로서 Search 인덱스 품질의 유효성을 검사하는 쉬운 방법을 제공합니다. 검색 탐색기를 사용하여 쿼리를 작성하고 JSON에서 결과를 검토할 수 있습니다.
 
@@ -206,15 +206,15 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
     > **참고** **포털에서 검색하려면 인덱스 CORS 설정에서 포털 원본을 허용하세요** 메시지가 표시되면 **포털 허용**을 선택한 다음, **검색**을 선택합니다.
 
-1. 이제 위치로 필터링해 봅시다. **쿼리 문자열** 필드에 `search=$filter=locations eq 'Chicago'`를 입력한 다음 **검색**을 선택합니다. 쿼리는 인덱스의 모든 문서를 검색하고 시카고 위치의 검토를 필터링합니다.
+1. 이제 위치로 필터링해 봅시다. **쿼리 문자열** 필드에 `search=locations:'Chicago'`를 입력한 다음 **검색**을 선택합니다. 쿼리는 인덱스의 모든 문서를 검색하고 시카고 위치의 검토를 필터링합니다.
 
-1. 이제 감정으로 필터링해 봅시다. **쿼리 문자열** 필드에 `search=$filter=sentiment eq 'negative'`를 입력한 다음 **검색**을 선택합니다. 쿼리는 인덱스의 모든 문서를 검색하고 부정적인 감정의 검토를 필터링합니다.
+1. 이제 감정으로 필터링해 봅시다. **쿼리 문자열** 필드에 `search=sentiment:'negative'`를 입력한 다음 **검색**을 선택합니다. 쿼리는 인덱스의 모든 문서를 검색하고 부정적인 감정의 검토를 필터링합니다.
 
    > **참고** 결과가 `@search.score`를 기준으로 정렬되는 방법을 확인하세요. 이는 결과가 지정한 쿼리와 일치하는 정도를 표시하기 위해 검색 엔진에서 할당한 점수입니다.
 
 1. 해결하려는 문제 중 하나는 특정 리뷰가 있을 수 있는 이유입니다. 부정적인 리뷰와 관련된 핵심 구를 살펴보겠습니다. 리뷰의 원인이 무엇이라고 생각하나요?
 
-## <a name="review-the-knowledge-store"></a>지식 저장소 검토
+## 지식 저장소 검토
 
 지식 저장소의 강력한 기능을 살펴보겠습니다. ‘데이터 가져오기 마법사’를 실행할 때 지식 저장소도 만들었습니다. 지식 저장소 내에서 AI 기술로 추출된 보강된 데이터가 프로젝션 및 테이블 형태로 유지되는 것을 알 수 있습니다.
 
@@ -250,6 +250,6 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
     지식 저장소가 리뷰의 콘텐츠에서 캡처할 수 있었던 핵심 구를 살펴보세요. 대부분의 필드가 키이므로 관계형 데이터베이스처럼 테이블을 연결할 수 있습니다. 마지막 필드는 기술 세트가 추출한 핵심 구를 표시합니다.
 
-## <a name="learn-more"></a>자세한 정보
+## 자세한 정보
 
 이 간단한 검색은 Azure Cognitive Search 서비스의 기능 중 일부만 인덱싱합니다. 이 서비스를 사용하여 수행할 수 있는 작업에 대해 자세히 알아보려면 [Azure Cognitive Search 서비스 페이지](/azure/search/search-what-is-azure-search)를 참조하세요.

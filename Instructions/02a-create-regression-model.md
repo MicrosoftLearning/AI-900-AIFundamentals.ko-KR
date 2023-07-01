@@ -3,13 +3,13 @@ lab:
   title: Azure Machine Learning 디자이너를 사용하여 회귀 살펴보기
 ---
 
-# <a name="explore-regression-with-azure-machine-learning-designer"></a>Azure Machine Learning 디자이너를 사용하여 회귀 살펴보기
+# Azure Machine Learning 디자이너를 사용하여 회귀 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
 이 연습에서는 특성에 따라 자동차 가격을 예측하는 회귀 모델을 학습합니다.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Azure Machine Learning 작업 영역 만들기  
+## Azure Machine Learning 작업 영역 만들기  
 
 1. Microsoft 자격 증명을 사용하여 [Azure Portal](https://portal.azure.com?azure-portal=true)에 로그인합니다.
 
@@ -27,13 +27,13 @@ lab:
 
 1. **Studio 시작**을 선택하거나 또는 새 브라우저 탭을 열고 [https://ml.azure.com](https://ml.azure.com?azure-portal=true)로 이동한 다음, Microsoft 계정을 사용하여 Azure Machine Learning 스튜디오에 로그인합니다.
 
-1. Azure Machine Learning 스튜디오에서 새로 만든 작업 영역이 표시됩니다. 그렇지 않은 경우 왼쪽 메뉴에서 **Microsoft**를 클릭합니다. 그런 다음 새 왼쪽 메뉴에서 구독에 연결된 모든 작업 영역이 나열되는 **작업 영역**을 선택합니다. 이 연습을 위해 만든 항목을 선택합니다. 
+1. Azure Machine Learning 스튜디오에서 새로 만든 작업 영역이 표시됩니다. 그렇지 않은 경우 왼쪽 메뉴에서 Azure 디렉터리를 선택합니다. 그런 다음 새 왼쪽 메뉴에서 디렉터리에 연결된 모든 **작업 영역**이 나열된 작업 영역을 선택하고 이 연습에 대해 만든 작업 영역을 선택합니다.
 
 > **참고** 이 모듈은 [Microsoft Azure AI 기본 사항: 기계 학습을 위한 시각적 도구 살펴보기](https://docs.microsoft.com/learn/paths/create-no-code-predictive-models-azure-machine-learning/) 학습 경로의 다른 모듈을 포함하여 Azure Machine Learning 작업 영역을 활용하는 여러 모듈 중 하나입니다. 고유한 Azure 구독을 사용하는 경우 작업 영역을 만든 후 다른 모듈에서 다시 사용하는 것이 좋습니다. 사용자의 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 Azure 구독에 약간의 데이터 스토리지 요금이 청구됩니다. 따라서 더 이상 필요하지 않은 경우 Azure Machine Learning 작업 영역을 삭제하는 것이 좋습니다.
 
-## <a name="create-compute"></a>컴퓨팅 만들기
+## 컴퓨팅 만들기
 
-1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true)에서 왼쪽 위에 있는 세 줄을 선택하여 인터페이스의 다양한 페이지를 봅니다(화면 크기를 최대화해야 할 수 있음). 왼쪽 창에서 해당 페이지를 사용하여 작업 영역에서 리소스를 관리할 수 있습니다. **컴퓨팅** 페이지(**관리** 아래)를 선택합니다.
+1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 왼쪽 위에 있는 **&#8801;** 아이콘(세 줄의 스택처럼 보이는 메뉴 아이콘)을 선택하여 인터페이스의 다양한 페이지를 봅니다(화면 크기를 최대화해야 할 수 있음). 왼쪽 창에서 해당 페이지를 사용하여 작업 영역에서 리소스를 관리할 수 있습니다. **컴퓨팅** 페이지(**관리** 아래)를 선택합니다.
 
 1. **컴퓨팅** 페이지에서 **컴퓨팅 클러스터** 탭을 선택하고 다음 설정의 새 컴퓨팅 클러스터를 추가하여 기계 학습 모델을 학습합니다.
     - **위치**: 작업 영역과 동일한 위치를 선택합니다. 해당 위치가 나열되어 있지 않으면 가장 가까운 위치를 선택합니다.
@@ -54,9 +54,9 @@ lab:
 
 컴퓨팅 클러스터는 만들어지는 데 시간이 좀 걸립니다. 대기하는 동안 다음 단계로 이동할 수 있습니다.
 
-## <a name="create-a-pipeline-in-designer"></a>디자이너에서 파이프라인 만들기 
+## 디자이너에서 파이프라인 만들기 
 
-1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 화면에서 왼쪽 위에 있는 세 줄 아이콘을 선택하여 왼쪽 창을 확장합니다. **작성자** 아래에 있는 **디자이너** 페이지를 보고 **+** 를 선택하여 새 파이프라인을 만듭니다.
+1. [Azure Machine Learning 스튜디오](https://ml.azure.com?azure-portal=true) 화면 왼쪽 위에 있는 메뉴 아이콘을 선택하여 왼쪽 창을 확장합니다. **작성자** 아래에 있는 **디자이너** 페이지를 보고 **+** 를 선택하여 새 파이프라인을 만듭니다.
 
 1. 화면의 오른쪽 위에서 **설정** 선택합니다. **설정** 창이 표시되지 않으면 위쪽의 파이프라인 이름 옆에 있는 바퀴 아이콘을 선택합니다.
 
@@ -64,11 +64,11 @@ lab:
 
 1. **설정**의 **초안 세부 정보**에서 초안 이름(**파이프라인 생성 날짜**)을 **자동 가격 학습**으로 변경합니다.
 
-1. **설정** 창의 오른쪽 위에 있는 닫기 아이콘을 선택하여 창을 닫습니다. 
+1. **설정** 창의 오른쪽 위에 있는 *닫*기 아이콘을 선택하여 창을 닫습니다. 
 
 ![Machine Learning 스튜디오 설정 창의 스크린샷.](media/create-regression-model/create-pipeline-help.png)
 
-## <a name="add-and-explore-a-dataset"></a>데이터 세트 추가 및 탐색
+## 데이터 세트 추가 및 탐색
 
 Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이터 세트가 포함되어 있습니다.
 
@@ -90,7 +90,7 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
     ![디자이너 캔버스에 표시된 자동차 가격 데이터의 데이터 세트 스크린샷](media/create-regression-model/dataset.png)
 
-## <a name="add-data-transformations"></a>데이터 변환 추가
+## 데이터 변환 추가
 
 일반적으로 데이터 변환을 적용하여 모델링용 데이터를 준비합니다. 자동차 가격 데이터의 경우 데이터를 탐색할 때 확인된 문제를 해결하기 위해 변환을 추가합니다.
 
@@ -147,7 +147,7 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
     >**팁** **stroke**, **peak-rpm**, **city-mpg** 열의 값을 비교하면 모든 열이 서로 다른 척도로 측정되었으므로 **peak-rpm**의 큰 값으로 인해 학습 알고리즘이 편중되어 **stroke**와 같은 값이 더 낮은 열에 비해 해당 열에 과도하게 종속될 수 있습니다. 일반적으로 데이터 과학자는 숫자 열을 비슷한 기준에 기초하도록 ‘정규화’하여 해당 편중을 최소화합니다.
 
-## <a name="run-the-pipeline"></a>파이프라인 실행
+## 파이프라인 실행
 
 데이터 변환을 적용하려면 파이프라인을 실행해야 합니다.
 
@@ -169,7 +169,7 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
 이제 모델 학습을 위한 데이터 세트가 준비되었습니다. 파이프라인으로 돌아가려면 작업 세부 정보 탭을 닫습니다.
 
-## <a name="create-training-pipeline"></a>학습 파이프라인 만들기
+## 학습 파이프라인 만들기
 
 데이터 변환을 사용하여 데이터를 준비한 후에는 이를 사용하여 기계 학습 모델을 학습할 수 있습니다. 다음 단계를 수행하여 **자동차 가격 학습** 파이프라인을 확장합니다.
 
@@ -204,7 +204,7 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
     ![데이터를 분할한 다음, 선형 회귀 및 점수를 사용하여 학습하는 방법의 스크린샷](media/create-regression-model/train-score.png)
 
-## <a name="run-the-training-pipeline"></a>학습 파이프라인 실행
+## 학습 파이프라인 실행
 
 이제 학습 파이프라인을 실행하고 모델을 학습할 준비가 되었습니다.
 
@@ -220,7 +220,7 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
 모델에서 **가격** 레이블의 값을 예측하지만 그 예측은 얼마나 신뢰할 만한 것일까요? 이를 평가하려면 모델을 평가해야 합니다.
 
-## <a name="evaluate-model"></a>모델 평가
+## 모델 평가
 
 회귀 모델을 평가하는 한 가지 방법은 예측된 레이블을 학습 중에 보류할 유효성 검사 데이터 세트의 실제 레이블과 비교하는 것입니다. 또 다른 방법은 여러 모델의 성능을 비교하는 것입니다.
 
@@ -252,9 +252,9 @@ Azure Machine Learning에는 회귀 모델에 사용할 수 있는 샘플 데이
 
 요구 사항에 맞는 평가 메트릭을 사용하는 모델을 발견했다면, 해당 모델을 새 데이터와 함께 사용할 준비를 할 수 있습니다.
 
-## <a name="create-and-run-an-inference-pipeline"></a>유추 파이프라인 만들기 및 실행
+## 유추 파이프라인 만들기 및 실행
 
-1. Azure Machine Learning 스튜디오 화면에서 왼쪽 위에 있는 세 줄을 선택하여 왼쪽 창을 확장합니다. **작업**(**자산** 아래)을 클릭하여 실행한 모든 작업을 봅니다. 실험 **mslearn-auto-training**을 선택한 다음, **mslearn-auto-training** 파이프라인을 선택합니다. 
+1. Azure Machine Learning 스튜디오 화면 왼쪽 위에 있는 메뉴 아이콘을 선택하여 왼쪽 창을 확장합니다. **작업**(**자산** 아래)을 클릭하여 실행한 모든 작업을 봅니다. 실험 **mslearn-auto-training**을 선택한 다음, **mslearn-auto-training** 파이프라인을 선택합니다. 
 
     ![왼쪽 메뉴의 작업 스크린샷 작업을 선택한 다음 실험 이름을 선택합니다.](media/create-regression-model/jobs-tab.png)
 
@@ -304,7 +304,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return scored_results
 ```
 
-    - **모델 점수 매기기** 모듈의 출력을 **Python 스크립트 실행**의 **Dataset1**(맨 왼쪽) 입력에 연결하고 **Python 스크립트 실행** 모듈의 출력을 **웹 서비스 출력**에 연결합니다.
+1. **모델 점수 매기기** 모듈의 출력을 **Python 스크립트 실행**의 **Dataset1**(맨 왼쪽) 입력에 연결하고 **Python 스크립트 실행** 모듈의 출력을 **웹 서비스 출력**에 연결합니다.
 
 1. 파이프라인이 다음 이미지와 유사한지 확인합니다.
 
@@ -318,13 +318,13 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 유추 파이프라인은 해당 특징에 따라 자동차 가격을 예측합니다. 이제 클라이언트 애플리케이션에서 사용할 수 있도록 파이프라인을 게시할 준비가 되었습니다.
 
-## <a name="deploy-model"></a>모델 배포
+## 모델 배포
 
 실시간 추론용 추론 파이프라인을 만들고 테스트한 후에는 이를 클라이언트 응용 프로그램에서 사용할 서비스로 게시할 수 있습니다.
 
 > **참고** 이 연습에서는 ACI(Azure Container Instance)에 웹 서비스를 배포합니다. 이러한 유형의 컴퓨팅은 동적으로 만들어지며 개발 및 테스트에 유용합니다. 프로덕션 환경에서는 ‘유추 클러스터’를 만들어 향상된 스케일링 성능 및 보안을 제공하는 AKS(Azure Kubernetes Service) 클러스터를 제공해야 합니다.
 
-## <a name="deploy-a-service"></a>서비스 배포
+## 서비스 배포
 
 1. 이전 단원에서 만든 **자동차 가격 예측** 유추 파이프라인을 확인합니다.
 
@@ -343,7 +343,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 1. 웹 서비스가 배포될 때까지 몇 분 정도 기다립니다. 배포 상태는 디자이너 인터페이스의 왼쪽 상단에 표시됩니다.
 
-## <a name="test-the-service"></a>서비스 테스트
+## 서비스 테스트
 
 1. **엔드포인트** 페이지에서 **predict-auto-price** 실시간 엔드포인트를 엽니다.
 
@@ -397,15 +397,15 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 또한 **사용** 탭의 자격 증명을 사용하여 클라이언트 애플리케이션에 연결할 준비가 된 서비스를 테스트했습니다. 여기서 랩을 종료합니다. 방금 배포한 서비스를 계속 실험해 볼 수 있습니다.
 
-## <a name="clean-up"></a>정리
+## 정리
 
-만든 웹 서비스는 *Azure Container Instance*에 호스트됩니다. 추가 실험 의사가 없는 경우 불필요한 Azure 사용이 발생하지 않도록 엔드포인트를 삭제해야 합니다. 또한 다시 필요로 하기 전까지 컴퓨팅 인스턴스를 중지해야 합니다.
+만든 웹 서비스는 *Azure Container Instance*에 호스트됩니다. 추가 실험 의사가 없는 경우 불필요한 Azure 사용이 발생하지 않도록 엔드포인트를 삭제해야 합니다. 컴퓨팅 클러스터도 삭제해야 합니다.
 
 1. [Azure Machine Learning Studio](https://ml.azure.com?azure-portal=true)의 **엔드포인트** 탭에서 **predict-auto-price** 엔드포인트를 선택합니다. 그런 다음, **삭제**를 선택하고 엔드포인트를 삭제하겠다고 확인합니다.
 
 1. **컴퓨팅** 페이지의 **컴퓨팅 클러스터** 탭에서 컴퓨팅 클러스터를 선택한 다음, **삭제**를 선택합니다.
 
->**참고**: 컴퓨팅을 중지하면 컴퓨팅 리소스에 대한 구독 요금이 청구되지 않습니다. 그러나 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 약간의 데이터 스토리지 요금이 청구됩니다. Azure Machine Learning 탐색을 완료했으면 Azure Machine Learning 작업 영역 및 관련 리소스를 삭제할 수 있습니다. 그러나 이 시리즈의 다른 랩을 완료하려는 경우에는 다시 만들어야 합니다.
+>**참고** 컴퓨팅을 삭제하면 컴퓨팅 리소스에 대한 구독 요금이 청구되지 않습니다. 그러나 구독에 Azure Machine Learning 작업 영역이 존재하는 동안에는 약간의 데이터 스토리지 요금이 청구됩니다. Azure Machine Learning 탐색을 완료했으면 Azure Machine Learning 작업 영역 및 관련 리소스를 삭제할 수 있습니다. 그러나 이 시리즈의 다른 랩을 완료하려는 경우에는 다시 만들어야 합니다.
 >
 > 작업 영역을 삭제하려면,
 >
