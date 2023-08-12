@@ -3,7 +3,7 @@ lab:
   title: Computer Vision 살펴보기
 ---
 
-# <a name="explore-computer-vision"></a>Computer Vision 살펴보기
+# Computer Vision 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
@@ -13,7 +13,7 @@ lab:
 
 이 랩에서는 간단한 명령줄 애플리케이션을 사용하여 Computer Vision 서비스가 작동하는 모습을 확인합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
 
-## <a name="create-a-cognitive-services-resource"></a>*Cognitive Services* 리소스 만들기
+## *Cognitive Services* 리소스 만들기
 
 **Computer Vision** 리소스 또는 **Cognitive Services** 리소스를 생성하여 Computer Vision 서비스를 사용할 수 있습니다.
 
@@ -33,7 +33,7 @@ lab:
 
 1. Cognitive Services 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+## Cloud Shell 실행
 
 Computer Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
 
@@ -55,7 +55,7 @@ Computer Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
     ![PowerShell이 시작될 때까지 기다립니다.](media/analyze-images-computer-vision-service/powershell-prompt.png)
 
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
+## 클라이언트 애플리케이션 구성 및 실행
 
 이제 Cloud Shell 환경이 생겼으므로 Computer Vision 서비스를 사용하여 이미지를 분석하는 간단한 애플리케이션을 실행할 수 있습니다.
 
@@ -134,6 +134,6 @@ Computer Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
 1. 세 번째 이미지에 대한 이미지 분석 결과를 검토합니다.
 
-## <a name="learn-more"></a>자세한 정보
+## 자세한 정보
 
-이 간단한 앱은 Computer Vision 서비스의 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Computer Vision 페이지](https://azure.microsoft.com/services/cognitive-services/computer-vision/)를 참조하세요.
+이 간단한 앱은 Computer Vision 서비스의 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Computer Vision 페이지](https://azure.microsoft.com/products/ai-services?activetab=pivot:visiontab)를 참조하세요.
