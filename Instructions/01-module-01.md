@@ -1,21 +1,21 @@
 ---
 lab:
-  title: Cognitive Services 살펴보기
+  title: Azure AI 서비스 살펴보기
 ---
 
-# <a name="explore-cognitive-services"></a>Cognitive Services 살펴보기
+# Azure AI 서비스 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
-Azure Cognitive Services는 비전, 음성, 언어, 의사 결정 서비스의 네 가지 주요 요소로 분류할 수 있는 일반적인 AI 기능을 캡슐화합니다. 이 연습에서는 소프트웨어 애플리케이션에서 Cognitive Services 리소스를 프로비저닝하고 사용하는 방법에 대한 일반적인 이해를 얻기 위해 의사 결정 서비스 중 하나를 살펴봅니다.
+Azure AI 서비스는 비전, 음성, 언어 및 의사 결정 서비스의 네 가지 기본 핵심 요소로 분류할 수 있는 일반적인 AI 기능을 캡슐화합니다. 이 연습에서는 의사 결정 서비스 중 하나를 살펴보고 소프트웨어 애플리케이션에서 Azure AI 서비스 리소스를 프로비전하고 사용하는 방법에 대한 일반적인 이해를 얻습니다.
 
-이 연습에서 살펴볼 특정 Cognitive Services는 *Anomaly Detector*입니다. Anomaly Detector는 시간이 지남에 따라 데이터 값을 분석하고 추가 조사를 위해 문제 또는 문제를 나타낼 수 있는 비정상적인 값을 검색하는 데 사용됩니다. 예를 들어 온도 제어 스토리지 시설의 센서는 매 분마다 온도를 모니터링하고 측정된 값을 기록할 수 있습니다. Anomaly Detector 서비스를 사용하여 기록된 온도 값을 분석하고 예상 온도의 정상 범위를 크게 벗어나는 모든 값에 플래그를 지정할 수 있습니다.
+이 연습에서 살펴볼 특정 Azure AI 서비스는 *Anomaly Detector*. Anomaly Detector는 시간이 지남에 따라 데이터 값을 분석하고 추가 조사를 위해 문제 또는 문제를 나타낼 수 있는 비정상적인 값을 검색하는 데 사용됩니다. 예를 들어 온도 제어 스토리지 시설의 센서는 매 분마다 온도를 모니터링하고 측정된 값을 기록할 수 있습니다. Anomaly Detector 서비스를 사용하여 기록된 온도 값을 분석하고 예상 온도의 정상 범위를 크게 벗어나는 모든 값에 플래그를 지정할 수 있습니다.
 
 Anomaly Detection 서비스의 기능을 테스트하기 위해 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
 
-> **참고** 이 연습의 목표는 Cognitive Services가 프로비저닝되고 사용되는 방식에 대한 일반적인 감각을 얻는 것입니다. Anomaly Detector가 예로 사용되지만 이 연습에서 변칙 검색에 대한 포괄적인 지식을 얻을 수는 없습니다.
+> **참고** 이 연습의 목표는 Azure AI 서비스를 프로비전하고 사용하는 방법에 대한 일반적인 감각을 얻는 것입니다. Anomaly Detector가 예로 사용되지만 이 연습에서 변칙 검색에 대한 포괄적인 지식을 얻을 수는 없습니다.
 
-## <a name="create-an-anomaly-detector-resource"></a>*Anomaly Detector* 리소스 만들기
+## *Anomaly Detector* 리소스 만들기
 
 먼저 Azure 구독에서 **Anomaly Detector** 리소스를 만들어 보겠습니다.
 
@@ -32,7 +32,7 @@ Anomaly Detection 서비스의 기능을 테스트하기 위해 Cloud Shell에�
 
 1. Anomaly Detector 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+## Cloud Shell 실행
 
 Anomaly Detector 서비스의 기능을 테스트하기 위해 Azure의 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
 
@@ -54,7 +54,7 @@ Anomaly Detector 서비스의 기능을 테스트하기 위해 Azure의 Cloud Sh
 
     ![PowerShell이 시작될 때까지 기다립니다.](media/anomaly-detector/powershell-prompt.png)
 
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
+## 클라이언트 애플리케이션 구성 및 실행
 
 이제 Cloud Shell 환경이 생겼으므로 Anomaly Detector 서비스를 사용하여 데이터를 분석하는 간단한 애플리케이션을 실행할 수 있습니다.
 
@@ -104,11 +104,7 @@ Anomaly Detector 서비스의 기능을 테스트하기 위해 Azure의 Cloud Sh
 
 1. 결과를 검토하고 결과의 마지막 열이 **True** 또는 **False**인지를 파악하여 각 날짜/시간에 기록된 값이 변칙으로 간주되는지 여부를 알아봅니다. 실제 상황에서 이 정보를 사용할 수 있는 방법을 고려합니다. 값이 냉장고 온도 또는 혈압이고 변칙이 감지된 경우 애플리케이션이 트리거할 수 있는 작업은 무엇인가요?  
 
-## <a name="learn-more"></a>자세한 정보
-
-이 간단한 앱은 Anomaly Detector 서비스의 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Anomaly Detector 페이지](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)를 참조하세요.
-
-## <a name="clean-up"></a>정리
+## 정리
 
 프로젝트가 끝날 때 여기에서 만든 리소스가 계속 필요한지 확인하는 것이 좋습니다. 계속 실행되는 리소스에는 요금이 부과될 수 있습니다. 
 

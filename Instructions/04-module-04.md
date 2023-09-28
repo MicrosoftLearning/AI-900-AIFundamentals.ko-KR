@@ -3,27 +3,27 @@ lab:
   title: 텍스트 분석 살펴보기
 ---
 
-# <a name="explore-text-analytics"></a>텍스트 분석 살펴보기
+# 텍스트 분석 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
 NLP(자연어 처리)는 문자 및 음성 언어를 처리하는 AI(인공 지능)의 한 분야입니다. NLP를 사용하여 텍스트 또는 음성에서 의미론적 의미를 추출하거나 자연어로 의미 있는 응답을 공식화하는 솔루션을 구축할 수 있습니다.
 
-Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및 감정에 따라 텍스트 분류를 비롯한 일부 기본 NLP 기능을 제공하는 언어 서비스의 텍스트 분석 기능이 포함되어 있습니다.
+Microsoft *Azure AI 서비스에는* 텍스트의 핵심 구 식별 및 감정에 따른 텍스트 분류를 포함하여 기본 제공되는 NLP 기능을 제공하는 *언어* 서비스의 텍스트 분석 기능이 포함되어 있습니다.
 
 예를 들어 가상의 *Margie's Travel* 조직이 고객에게 호텔 숙박에 대한 리뷰를 제출하도록 권장했다고 가정해 보겠습니다. 언어 서비스를 사용하여 핵심 문구를 추출하여 리뷰를 요약하고, 어떤 리뷰가 긍정적이고 어떤 것이 부정적인지 결정하거나, 위치 또는 사람과 같은 알려진 엔터티에 대한 언급에 대한 리뷰 텍스트를 분석할 수 있습니다.
 
 언어 서비스의 기능을 테스트하기 위해 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
 
-## <a name="create-a-cognitive-services-resource"></a>*Cognitive Services* 리소스 만들기
+## *Azure AI 서비스* 리소스 만들기
 
-**언어** 리소스 또는 **Cognitive Services** 리소스를 생성하여 언어 서비스를 사용할 수 있습니다.
+언어 리소스 또는 **Azure AI 서비스** 리소스를 만들어 **언어** 서비스를 사용할 수 있습니다.
 
-아직 만들지 않았다면 Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
+아직 수행하지 않은 경우 Azure 구독에서 **Azure AI 서비스 리소스를** 만듭니다.
 
 1. 다른 브라우저 탭의 [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
 
-1. **&#65291;리소스 만들기** 단추를 선택하고 *Cognitive Services*를 검색한 후에 다음 설정을 사용하여 **Cognitive Services** 리소스를 만듭니다.
+1. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
     - **지역**: 사용 가능한 지역을 선택합니다.
@@ -33,13 +33,13 @@ Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및
 
 1. 리소스를 검토하고 만듭니다.
 
-### <a name="get-the-key-and-endpoint-for-your-cognitive-services-resource"></a>Cognitive Services 리소스의 키 및 엔드포인트 가져오기
+### Azure AI 서비스 리소스에 대한 키 및 엔드포인트 가져오기
 
-1. 배포가 완료될 때까지 기다립니다. 그런 다음, Cognitive Services 리소스로 이동하고 **개요** 페이지에서 링크를 선택하여 서비스의 키를 관리합니다. 클라이언트 애플리케이션에서 Cognitive Services 리소스에 연결하려면 엔드포인트와 키가 필요합니다.
+1. 배포가 완료될 때까지 기다립니다. 그런 다음, Azure AI 서비스 리소스로 이동하고 **개요** 페이지에서 서비스의 키를 관리하는 링크를 선택합니다. 클라이언트 애플리케이션에서 Azure AI 서비스 리소스에 연결하려면 엔드포인트와 키가 필요합니다.
 
 1. 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 **키** 및 **엔드포인트**가 필요합니다.
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+## Cloud Shell 실행
 
 언어 서비스의 텍스트 분석 기능을 테스트하기 위해 Azure의 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
 
@@ -61,7 +61,7 @@ Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및
 
     ![PowerShell이 시작될 때까지 기다립니다.](media/analyze-text-language-service/powershell-prompt.png)
 
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
+## 클라이언트 애플리케이션 구성 및 실행
 
 이제 사용자 지정 모델이 있으므로 언어 서비스를 사용하는 간단한 클라이언트 애플리케이션을 실행할 수 있습니다.
 
@@ -87,11 +87,11 @@ Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및
 
     ![언어 서비스를 사용하기 위한 코드가 포함된 편집기](media/analyze-text-language-service/analyze-text-code.png)
 
-1. 코드의 세부 정보에 대해 너무 걱정하지 마세요. Azure Portal에서 Cognitive Services 리소스로 이동합니다. 그런 다음, 왼쪽 창에서 **키 및 엔드포인트** 페이지를 선택합니다. 페이지에서 키와 엔드포인트를 복사하여 코드 편집기에 붙여넣고 **YOUR_KEY** 및 **YOUR_ENDPOINT** 자리 표시자 값을 각각 바꿉니다.
+1. 코드의 세부 정보에 대해 너무 걱정하지 마세요. Azure Portal Azure AI 서비스 리소스로 이동합니다. 그런 다음, 왼쪽 창에서 **키 및 엔드포인트** 페이지를 선택합니다. 페이지에서 키와 엔드포인트를 복사하여 코드 편집기에 붙여넣고 **YOUR_KEY** 및 **YOUR_ENDPOINT** 자리 표시자 값을 각각 바꿉니다.
 
     > **팁** **키 및 엔드포인트**와 **편집기** 창에서 작업할 때 구분줄을 사용하여 화면 영역을 조정해야 할 수도 있습니다.
 
-    ![Cognitive Services 리소스의 왼쪽 창에 있는 키 및 엔드포인트 탭을 찾습니다.](media/analyze-text-language-service/key-endpoint-support.png)
+    ![Azure AI 서비스 리소스의 왼쪽 창에서 키 및 엔드포인트 탭을 찾습니다.](media/analyze-text-language-service/key-endpoint-support.png)
 
     키 및 엔드포인트 값을 붙여넣으면 코드의 첫 번째 줄은 다음과 유사하게 표시됩니다.
 
@@ -102,7 +102,7 @@ Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및
 
 1. 편집기 창의 오른쪽 위에서 **...** 단추를 사용하여 메뉴를 열고 **저장**을 선택하여 변경 내용을 저장합니다. 그런 다음, 메뉴를 다시 열고 **편집기 닫기**를 선택합니다.
 
-    샘플 클라이언트 애플리케이션은 Cognitive Services의 언어 서비스를 사용하여 언어를 감지하고, 핵심 문구를 추출하고, 감정을 결정하고, 검토를 위해 알려진 엔터티를 추출합니다.
+    샘플 클라이언트 애플리케이션은 Azure AI Services의 언어 서비스를 사용하여 언어를 검색하고, 핵심 구를 추출하고, 감정을 결정하고, 검토를 위해 알려진 엔터티를 추출합니다.
 
 1. Cloud Shell에서 다음 명령어를 입력하여 코드를 실행합니다.
 
@@ -154,6 +154,6 @@ Microsoft Azure *Cognitive Services*에는 텍스트의 주요 구문 식별 및
 
 1. 출력을 검토합니다.
 
-## <a name="learn-more"></a>자세한 정보
+## 자세한 정보
 
 이 간단한 앱은 언어 서비스의 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [언어 서비스 페이지](https://azure.microsoft.com/services/cognitive-services/language-service/)를 참조하세요.
