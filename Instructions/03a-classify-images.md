@@ -5,9 +5,9 @@ lab:
 
 # 이미지 분류 살펴보기
 
-*Computer Vision* 인지 서비스는 이미지를 사용하기 위한 미리 작성된 유용한 모델을 제공하지만 Computer Vision을 위해 자체 모델을 학습시켜야 하는 경우가 많습니다. 예를 들어 야생 동물 보호 organization organization 동작에 민감한 카메라를 사용하여 동물의 목격을 추적하려고한다고 가정해 보겠습니다. 카메라에 의해 캡처 된 이미지는 특정 지역에서 특정 종의 존재를 확인하고 멸종 위기에 처한 종에 대한 보존 노력을 지원하는 데 사용할 수 있습니다. 이를 위해 organization 캡처된 사진에서 다양한 동물 종을 식별하도록 학습된 *이미지 분류* 모델을 활용할 수 있습니다.
+*Azure AI Vision* 서비스는 이미지 작업에 유용한 미리 빌드된 모델을 제공하지만 컴퓨터 비전을 위해 고유한 모델을 학습시켜야 하는 경우가 많습니다. 예를 들어, 야생 동물 보호 organization organization 모션에 민감한 카메라를 사용하여 동물의 목격을 추적하려고한다고 가정해 보겠습니다. 카메라에 의해 캡처 된 이미지는 특정 지역에서 특정 종의 존재를 확인하고 멸종 위기에 처한 종에 대한 보존 노력을 지원하는 데 사용할 수 있습니다. 이를 위해 organization 캡처된 사진에서 다양한 동물 종을 식별하도록 학습된 *이미지 분류* 모델의 이점을 누릴 수 있습니다.
 
-Azure에서는 ***Custom Vision*** Cognitive Service를 사용하여 기존 이미지를 기준으로 이미지 분류 모델을 학습시킬 수 있습니다. 이미지 분류 솔루션을 만들기 위한 요소에는 두 가지가 있습니다. 먼저 기존 이미지를 사용하여 다른 클래스를 인식하도록 모델을 학습시켜야 합니다. 그런 다음, 모델이 학습되면 애플리케이션에서 사용할 수 있는 서비스로 게시해야 합니다.
+Azure에서는 ***Custom Vision*** 서비스를 사용하여 기존 이미지를 기반으로 이미지 분류 모델을 학습시킬 수 있습니다. 이미지 분류 솔루션을 만들기 위한 요소에는 두 가지가 있습니다. 먼저 기존 이미지를 사용하여 다른 클래스를 인식하도록 모델을 학습시켜야 합니다. 그런 다음, 모델이 학습되면 애플리케이션에서 사용할 수 있는 서비스로 게시해야 합니다.
 
 Custom Vision 서비스의 기능을 테스트하기 위해 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 동일한 원칙과 기능이 웹 사이트 또는 모바일 앱과 같은 실제 솔루션에 적용됩니다.
 
@@ -15,17 +15,17 @@ Custom Vision 서비스의 기능을 테스트하기 위해 Cloud Shell에서 �
 
 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
-## *Cognitive Services* 리소스 만들기
+## *Azure AI 서비스* 리소스 만들기
 
-**Custom Vision** 리소스 또는 **Cognitive Services** 리소스를 생성하여 Custom Vision 서비스를 사용할 수 있습니다.
+Custom Vision 리소스 또는 **Azure AI** 서비스 리소스를 만들어 **Custom Vision** 서비스를 사용할 수 있습니다.
 
->**참고** 일부 리소스는 일부 지역에서 사용할 수 없습니다. Custom Vision 리소스를 만들든 또는 Cognitive Services 리소스를 만들든 관계없이 [특정 지역](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)에서 만들어진 리소스만 Custom Vision 서비스에 액세스하는 데 사용할 수 있습니다. 편의상 아래 구성 지침에 지역이 미리 선택되어 있습니다.
+>**참고** 일부 리소스는 일부 지역에서 사용할 수 없습니다. Custom Vision 만들든 Azure AI 서비스 리소스를 만들든 [특정 지역에서](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) 만든 리소스만 Custom Vision 서비스에 액세스하는 데 사용할 수 있습니다. 편의상 아래 구성 지침에 지역이 미리 선택되어 있습니다.
 
-Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
+Azure 구독에서 **Azure AI 서비스** 리소스를 만듭니다.
 
 1. [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
 
-1. **&amp;#65291; 리소스 만들기** 단추를 클릭하고, *Cognitive Services*를 검색하고, 다음 설정을 통해 **Cognitive Services** 리소스를 만듭니다.
+1. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
     - **지역:** 미국 동부
@@ -35,13 +35,13 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 1. 리소스를 검토 및 만들고 배포가 완료될 때까지 기다립니다. 그런 다음, 배포된 리소스로 이동합니다.
 
-1. Cognitive Services 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
+1. Azure AI 서비스 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
 ## Custom Vision 프로젝트 만들기
 
 개체 감지 모델을 학습시키려면 학습 리소스에 따라 Custom Vision 프로젝트를 만들어야 합니다. 이렇게 하려면 Custom Vision 포털을 사용합니다.
 
-1. 에서 [https://aka.ms/animal-images](https://aka.ms/animal-images)학습 이미지를 다운로드하고 추출합니다. 이러한 이미지는 압축된 폴더에 제공됩니다. 압축을 풀면 **코끼리**, **기린** 및 **사자**라는 하위 폴더가 포함됩니다.
+1. 에서 [https://aka.ms/animal-images](https://aka.ms/animal-images)학습 이미지를 다운로드하고 추출합니다. 이러한 이미지는 압축된 폴더에 제공되며, 압축을 풀면 **코끼리**, **기린** 및 **사자**라는 하위 폴더가 포함됩니다.
 
 1. 새 브라우저 탭을 열고 에서 Custom Vision 포털[https://customvision.ai](https://customvision.ai?azure-portal=true)로 이동합니다. 메시지가 표시되면 Azure 구독과 연결된 Microsoft 계정을 사용하여 로그인하고 서비스 약관에 동의합니다.
 
@@ -49,16 +49,16 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
     - **이름**: 동물 식별
     - **설명**: 동물에 대한 이미지 분류
-    - **리소스**: *이전에 만든 Cognitive Services 또는 Custom Vision 리소스*
+    - **리소스**: *이전에 만든 Azure AI 서비스 또는 Custom Vision 리소스*
     - **프로젝트 형식**: 분류
     - **분류 형식**: 다중 클래스(이미지당 단일 태그)
     - **도메인**: 일반 \[A2]
 
-1. **이미지 추가**를 클릭하고 이전에 추출한 **elephant** 폴더의 모든 파일을 선택합니다. 그런 다음, 다음과 같이 태그 *코끼리*를 지정하여 이미지 파일을 업로드합니다.
+1. **이미지 추가**를 클릭하고 이전에 추출한 **elephant** 폴더의 모든 파일을 선택합니다. 그런 다음 이미지 파일을 업로드하고 태그 *코끼리*를 다음과 같이 지정합니다.
 
-    ![이미지 업로드 인터페이스의 스크린샷](media/create-image-classification-system/upload-elephants.png)
+    ![이미지 업로드 인터페이스의 스크린샷.](media/create-image-classification-system/upload-elephants.png)
 
-1. **이미지 추가**([+]) 단추를 사용하여 기*린* 태그가 있는 **기린** 폴더의 이미지와 **사자** 폴더의 이미지를 태그 *사자*와 함께 업로드합니다.
+1. **이미지 추가**([+]) 단추를 사용하여 기*린* 태그가 있는 **기린** 폴더에 이미지를 업로드하고 **사자** 폴더의 이미지를 태그 *사자*와 함께 업로드합니다.
 
 1. Custom Vision 프로젝트에서 업로드한 이미지를 탐색합니다. 각 클래스의 이미지는 다음과 같이 17개여야 합니다.
 
@@ -66,7 +66,7 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 1. Custom Vision 프로젝트에서 이미지 위에 있는 **학습**을 클릭하여 태그가 지정된 이미지로 분류 모델을 학습시킵니다. **빠른 학습** 옵션을 선택한 다음 학습 반복이 완료되기를 기다립니다.
 
-    > **팁**: 교육은 몇 분 정도 걸릴 수 있습니다. 기다리는 동안 [눈 표범 셀카와 AI가 멸종 위기에 처한 동물을 추적하는 실제 프로젝트를 설명하는 멸종에서 종을 구하는 데 어떻게 도움이 될 수 있는지](https://news.microsoft.com/transform/snow-leopard-selfies-ai-save-species/) 검사.
+    > **팁**: 교육은 몇 분 정도 걸릴 수 있습니다. 기다리는 동안 [눈 표범 셀카와 AI가 멸종에서 종을 구하는 데 어떻게 도움이 될 수 있는지](https://news.microsoft.com/transform/snow-leopard-selfies-ai-save-species/) 검사 컴퓨터 비전을 사용하여 야생에서 멸종 위기에 처한 동물을 추적하는 실제 프로젝트를 설명합니다.
 
 1. 모델 반복을 학습시킨 후에는 정밀도, 재현율 및 *AP* 성능 메트릭을 검토합니다. 이러한 메트릭은 분류 모델의 예측 정확도를 측정하며 모두 높게 나타납니다.
 
@@ -78,9 +78,9 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 1. **이미지 URL** 상자에 **빠른 테스트 이미지(&#10132;)** 단추를 입력 `https://aka.ms/giraffe` 하고 클릭합니다.
 
-1. 모델에서 반환된 예측 보기 - *기린* 의 확률 점수가 다음과 같이 가장 높아야 합니다.
+1. 모델에서 반환된 예측 보기 - *기린* 의 확률 점수는 다음과 같이 가장 높아야 합니다.
 
-    ![빠른 테스트 인터페이스의 스크린샷](media/create-image-classification-system/quick-test.png)
+    ![빠른 테스트 인터페이스의 스크린샷.](media/create-image-classification-system/quick-test.png)
 
 1. **빠른 테스트** 창을 닫습니다.
 
@@ -90,7 +90,7 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 1. **&#128504; 게시**를 클릭하여 다음 설정으로 학습된 모델을 게시합니다.
     - **모델 이름**: 동물
-    - **예측 리소스**: *이전에 만든 Cognitive Services 또는 Custom Vision 예측 리소스*입니다.
+    - **예측 리소스**: *이전에 만든 Azure AI 서비스 또는 Custom Vision 예측 리소스*입니다.
 
 1. 게시한 후 예측 URL(&#127760;) 아이콘을 클릭하여 게시된 모델을 사용하는 데 필요한 정보를 볼 수 있습니다.
 
@@ -102,7 +102,7 @@ Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
 
 Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 클라우드 셸에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다.
 
-1. Azure Portal 포함된 브라우저 탭으로 다시 전환하고 검색 상자 오른쪽에 있는 페이지 맨 위에 있는 **클라우드 셸**(**[>_]**) 단추를 선택합니다. 그러면 포털 아래쪽에 클라우드 셸 창이 열립니다.
+1. Azure Portal 포함된 브라우저 탭으로 다시 전환하고 검색 상자 오른쪽에 있는 페이지 맨 위에 있는 **Cloud Shell**(**[>_]**) 단추를 선택합니다. 그러면 포털 아래쪽에 클라우드 셸 창이 열립니다.
 
     Cloud Shell을 처음 열면 사용할 셸 유형(*Bash* 또는 *PowerShell*)을 선택하라는 메시지가 표시될 수 있습니다. 그렇다면 **PowerShell**을 선택합니다.
 
@@ -130,7 +130,7 @@ Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 클라우�
     code classify-image.ps1
     ```
 
-    이렇게 하면 아래 이미지의 편집기처럼 편집기가 열립니다.
+    이렇게 하면 아래 이미지와 같은 편집기가 열립니다.
 
      ![클라우드 셸의 코드 편집기 스크린샷](media/create-image-classification-system/code-editor.png)
 
@@ -191,8 +191,6 @@ Custom Vision 서비스의 기능을 테스트하기 위해 Azure의 클라우�
 
 1. 모델이 이 이미지를 **사자**로 분류했는지 확인합니다.
 
-잘하면 이미지 분류 모델이 세 개의 이미지를 모두 올바르게 분류했습니다.
+이미지 분류 모델이 세 개의 이미지를 모두 올바르게 분류할 수 있기를 바랍니다.
 
-## 자세한 정보
 
-이 연습에서는 Custom Vision 서비스의 일부 기능만 보여줍니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Custom Vision 페이지](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)를 참조하세요.

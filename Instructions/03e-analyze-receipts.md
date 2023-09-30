@@ -3,7 +3,7 @@ lab:
   title: 양식 인식 살펴보기
 ---
 
-# <a name="explore-form-recognition"></a>양식 인식 살펴보기
+# 양식 인식 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
@@ -15,15 +15,15 @@ Form Recognizer는 학습된 기계 학습 모델을 사용하여 청구서, 영
 
 Form Recognizer 서비스의 기능을 테스트하기 위해 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
 
-## <a name="create-a-cognitive-services-resource"></a>*Cognitive Services* 리소스 만들기
+## *Azure AI 서비스* 리소스 만들기
 
-**Form Recognizer** 리소스 또는 **Cognitive Services** 리소스를 생성하여 Form Recognizer 서비스를 사용할 수 있습니다.
+Form Recognizer 리소스 또는 **Azure AI** 서비스 리소스를 만들어 **Form Recognizer** 서비스를 사용할 수 있습니다.
 
-아직 만들지 않았다면 Azure 구독에서 **Cognitive Services** 리소스를 만듭니다.
+아직 수행하지 않은 경우 Azure 구독에서 **Azure AI 서비스 리소스를** 만듭니다.
 
 1. 다른 브라우저 탭의 [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
 
-1. **&amp;#65291; 리소스 만들기** 단추를 클릭하고, *Cognitive Services*를 검색하고, 다음 설정을 통해 **Cognitive Services** 리소스를 만듭니다.
+1. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
     - **지역**: 사용 가능한 지역을 선택합니다.
@@ -33,9 +33,9 @@ Form Recognizer 서비스의 기능을 테스트하기 위해 Cloud Shell에서 
 
 1. 리소스를 검토 및 만들고 배포가 완료될 때까지 기다립니다. 그런 다음, 배포된 리소스로 이동합니다.
 
-1. Cognitive Services 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
+1. Azure AI 서비스 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+## Cloud Shell 실행
 
 Form Recognizer 서비스의 기능을 테스트하기 위해 Azure의 Cloud Shell에서 실행되는 간단한 명령줄 애플리케이션을 사용합니다. 
 
@@ -57,7 +57,7 @@ Form Recognizer 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
     ![PowerShell이 시작될 때까지 기다립니다.](media/analyze-receipts/powershell-prompt.png) 
 
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
+## 클라이언트 애플리케이션 구성 및 실행
 
 이제 사용자 지정 모델이 있으므로 Form Recognizer 서비스를 사용하는 간단한 클라이언트 애플리케이션을 실행할 수 있습니다.
 
@@ -83,7 +83,7 @@ Form Recognizer 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
     ![영수증의 필드를 분석하는 코드가 포함된 편집기입니다.](media/analyze-receipts/recognize-receipt-code.png)
 
-1. 코드의 세부 사항에 대해 너무 걱정하지 마세요. 중요한 점은 엔드포인트 URL과 Cognitive Services 리소스의 키 중 하나가 필요하다는 것입니다. Azure Portal의 리소스에 대한 **키 및 엔드포인트** 페이지에서 이러한 값을 복사하여 코드 편집기에 붙여넣고 각각 **YOUR_KEY** 및 **YOUR_ENDPOINT** 자리 표시자 값을 대체합니다.
+1. 코드의 세부 정보에 대해 너무 걱정하지 마세요. 중요한 점은 엔드포인트 URL과 Azure AI 서비스 리소스에 대한 키 중 하나가 필요하다는 것입니다. Azure Portal의 리소스에 대한 **키 및 엔드포인트** 페이지에서 이러한 값을 복사하여 코드 편집기에 붙여넣고 각각 **YOUR_KEY** 및 **YOUR_ENDPOINT** 자리 표시자 값을 대체합니다.
 
     > **팁** **키 및 엔드포인트**와 **편집기** 창에서 작업할 때 구분줄을 사용하여 화면 영역을 조정해야 할 수도 있습니다.
 
@@ -109,6 +109,6 @@ Form Recognizer 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
 1. 반환된 결과를 검토합니다. Form Recognizer가 양식의 데이터를 해석하여 가맹점 주소 및 전화 번호, 거래 날짜 및 시간뿐만 아니라 품목, 소계, 세금 및 총 금액을 올바르게 식별할 수 있는지 확인합니다.
 
-## <a name="learn-more"></a>자세한 정보
+## 자세한 정보
 
 이 간단한 앱은 Computer Vision 서비스의 Form Recognizer 기능 중 일부만 표시합니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Form Recognizer 페이지](https://docs.microsoft.com/azure/applied-ai-services/form-recognizer/overview)를 참조하세요.
