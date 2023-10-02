@@ -7,6 +7,8 @@ Content Safety Studio를 사용하면 텍스트 및 이미지 콘텐츠를 조�
 
 이 랩 연습에서는 Azure Portal 다중 서비스 Azure AI Services 리소스를 만들고 해당 엔드포인트 및 키를 검사합니다. 그런 다음 Content Safety Studio를 사용하여 콘텐츠 안전 AI 서비스의 기능을 탐색합니다. 
 
+> **참고** 이 연습의 목표는 Azure AI 서비스를 프로비전하고 사용하는 방법에 대한 일반적인 감각을 얻는 것입니다. 콘텐츠 안전은 예로 사용되지만 이 연습에서는 콘텐츠 안전에 대한 포괄적인 지식을 얻을 수 없습니다.
+
 ## AI Services 리소스 만들기
 
 1.  다른 브라우저 탭의 [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
@@ -20,6 +22,8 @@ Content Safety Studio를 사용하면 텍스트 및 이미지 콘텐츠를 조�
 
 ## Content Safety Studio에 리소스 연결 
 별도의 브라우저 탭에서 Content Safety Studio를 열고 로그인합니다. 시작 화면이 표시됩니다.
+
+![콘텐츠 안전 스튜디오 방문 페이지의 스크린샷.](./media/content-safety/content-safety-getting-started.png)
 
 1.  오른쪽 위 메뉴에서 설정 코그를 클릭합니다.
 2.  방금 만든 Azure AI 서비스 리소스를 선택한 다음 리소스 사용을 클릭합니다.
