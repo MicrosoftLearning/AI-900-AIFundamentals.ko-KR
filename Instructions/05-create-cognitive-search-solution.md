@@ -23,9 +23,9 @@ lab:
 Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스가 필요합니다.
 
 - 인덱싱 및 쿼리를 관리하는 **Azure Cognitive Search** 리소스.
-- **Cognitive Services** 리소스는 검색 솔루션이 AI 생성 인사이트로 데이터 소스의 데이터를 보강하는 데 사용할 수 있는 기술에 대한 AI 서비스를 제공합니다.
+- 검색 솔루션이 AI 생성 인사이트를 사용하여 데이터 원본의 데이터를 보강하는 데 사용할 수 있는 기술을 위한 AI 서비스를 제공하는 **Azure AI 서비스** 리소스입니다.
 
-    > **참고** Azure Cognitive Search 및 Cognitive Services 리소스는 동일한 위치에 있어야 합니다.
+    > **참고** Azure Cognitive Search 및 Azure AI 서비스 리소스는 동일한 위치에 있어야 합니다.
 
 - Blob 컨테이너가 있는 **스토리지 계정**으로, 원시 문서와 기타 테이블, 개체 또는 파일 컬렉션을 저장합니다.
 
@@ -45,11 +45,11 @@ Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스�
 
 1. 배포가 완료되면 **리소스로 이동**을 선택합니다. Azure Cognitive Search 개요 페이지에서 인덱스를 추가하고, 데이터를 가져오고, 만든 인덱스를 검색할 수 있습니다.
 
-### Cognitive Services 리소스 만들기
+### Azure AI 서비스 리소스 만들기
 
-Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Services** 리소스를 프로비전해야 합니다. 검색 솔루션은 이 리소스를 사용하여 AI에서 생성된 인사이트를 사용하여 데이터 저장소의 데이터를 보강합니다.
+Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비스** 리소스를 프로비전해야 합니다. 검색 솔루션은 이 리소스를 사용하여 AI에서 생성된 인사이트를 사용하여 데이터 저장소의 데이터를 보강합니다.
 
-1. Azure Portal의 홈페이지로 돌아가서 **＋ 리소스 만들기** 단추를 선택하고 *Cognitive Services*를 검색한 후, 다음 설정을 사용하여 **Cognitive Services** 리소스를 만듭니다. 
+1. Azure Portal 홈페이지로 돌아갑니다. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: Azure Cognitive Search 리소스와 동일한 리소스 그룹
     - **지역**: Azure Cognitive Search 리소스와 동일한 지역
@@ -67,7 +67,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. 스토리지 계정을 검색하고 다음 설정을 사용하여 **스토리지 계정** 리소스를 만듭니다.
     - **구독**: *자신의 Azure 구독*.
-    - **리소스 그룹**: Azure Cognitive Search 리소스 및 Cognitive Services와 동일한 리소스 그룹
+    - **리소스 그룹**: *Azure Cognitive Search 및 Azure AI 서비스 리소스와 동일한 리소스 그룹입니다*.
     - **스토리지 계정 이름**: 고유한 이름
     - **위치**: 사용 가능한 위치 선택
     - **성능**: 표준
@@ -75,7 +75,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. **검토**를 클릭한 다음, **만들기**를 클릭합니다. 배포가 완료될 때까지 기다린 다음, 배포된 리소스로 이동합니다.
 
-1. 만든 Azure Storage 계정의 왼쪽 메뉴 창에서 **구성** (설정 아래) **을** 선택합니다.
+1. 만든 Azure Storage 계정의 왼쪽 메뉴 창에서 **구성** ( **설정** 아래)을 선택합니다.
 1. *Blob 익명 액세스 허용* 설정을 사용으로 변경**한** 다음 **, 저장**을 선택합니다.
 
 ## Azure Storage에 문서 업로드
@@ -126,7 +126,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Servi
 
 1. **다음: 인식 기술 추가(선택 사항)** 를 선택합니다.
 
-1. **Cognitive Services 연결** 섹션에서 Cognitive Services 리소스를 선택합니다.  
+1. **Cognitive Services 연결** 섹션에서 Azure AI 서비스 리소스를 선택합니다.  
 
 1. **보강 추가** 섹션에서 다음을 수행합니다.
     - **기술 세트 이름**을 **coffee-skillset** 변경합니다.
