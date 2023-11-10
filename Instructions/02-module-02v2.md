@@ -1,13 +1,13 @@
 ---
 lab:
-  title: Computer Vision 살펴보기
+  title: Computer Vision 탐색
 ---
 
-# Computer Vision 살펴보기
+# Computer Vision 탐색
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
-*Computer Vision* 서비스는 미리 학습된 기계 학습 모델을 사용하여 이미지를 분석하고 해당 이미지에 대한 정보를 추출합니다.
+*Computer Vision* 서비스는 미리 학습된 기계 학습 모델을 사용하여 이미지를 분석하고 이미지에 대한 정보를 추출합니다.
 
 예를 들어 가상의 소매점인 *Northwind Traders*가 AI 서비스에서 매장을 모니터링하여 도움이 필요한 고객을 식별하고 직원에게 도움을 주도록 지시하는 "스마트 스토어"를 구현하기로 결정했다고 가정해 보겠습니다. Computer Vision 서비스를 사용하면 매장 전체의 카메라에서 촬영한 이미지를 분석하여 해당 이미지가 나타내는 내용에 대해 의미 있는 설명을 제공할 수 있습니다.
 
@@ -15,23 +15,23 @@ lab:
 
 ## *Azure AI 서비스* 리소스 만들기
 
-Computer Vision 리소스 또는 **Azure AI** 서비스 리소스를 만들어 **Computer Vision** 서비스를 사용할 수 있습니다.
+Computer Vision 리소스 또는 **Azure AI 서비스 리소스를 **만들어 Computer Vision** 서비스를 사용할 수 있습니다**.
 
 아직 수행하지 않은 경우 Azure 구독에서 **Azure AI 서비스 리소스를** 만듭니다.
 
 1. 다른 브라우저 탭의 [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
 
-1. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
+1. **65291을 클릭합니다. 리소스** 단추를 만들고 Azure AI 서비스를 검색*합니다*. Azure AI 서비스 계획 만들기****를** 선택합니다**. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
-    - **지역**: 사용 가능한 지역을 선택합니다.
-    - **이름**: *고유한 이름을 입력*합니다.
+    - **지역**: 사용 가능한 지역을 선택합니다**.
+    - **이름**: 고유한 이름을 입력합니다.
     - **가격 책정 계층**: 표준 S0
     - **이 확인란 선택하여 아래의 모든 약관을 읽고 이해했음을 확인**: 선택하였습니다.
 
 1. 리소스를 검토 및 만들고 배포가 완료될 때까지 기다립니다. 그런 다음, 배포된 리소스로 이동합니다.
 
-1. Azure AI 서비스 리소스에 대한 **키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
+1. Azure AI 서비스 리소스에 **대한 키 및 엔드포인트** 페이지를 봅니다. 클라이언트 애플리케이션에서 연결하려면 엔드포인트와 키가 필요합니다.
 
 ## Cloud Shell 실행
 
@@ -39,7 +39,7 @@ Computer Vision 서비스의 기능을 테스트하기 위해 Azure의 Cloud She
 
 1. Azure Portal에서 검색 상자 오른쪽 페이지 맨 위에 있는 **[>_]**(*Cloud Shell*) 단추를 선택합니다. 그러면 포털 아래쪽에 Cloud Shell 창이 열립니다.
 
-    ![맨 위 검색 상자 오른쪽에 있는 아이콘을 클릭하여 Cloud Shell을 시작합니다.](media/analyze-images-computer-vision-service/powershell-portal-guide-1.png)
+    ![맨 위 검색 상자 오른쪽에 있는 아이콘을 클릭하여 Cloud Shell 시작](media/analyze-images-computer-vision-service/powershell-portal-guide-1.png)
 
 1. Cloud Shell을 처음 열면 사용할 셸 유형(*Bash* 또는 *PowerShell*)을 선택하라는 메시지가 표시될 수 있습니다. **PowerShell**을 선택합니다. 이 옵션이 표시되지 않으면 단계를 건너뜁니다.  
 
