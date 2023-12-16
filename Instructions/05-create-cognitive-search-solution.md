@@ -23,37 +23,37 @@ lab:
 Fourth Coffee를 위해 만들 솔루션에는 Azure 구독의 다음 리소스가 필요합니다.
 
 - 인덱싱 및 쿼리를 관리하는 **Azure Cognitive Search** 리소스.
-- 검색 솔루션이 AI 생성 인사이트를 사용하여 데이터 원본의 데이터를 보강하는 데 사용할 수 있는 기술을 위한 AI 서비스를 제공하는 **Azure AI 서비스** 리소스입니다.
+- **Cognitive Services** 리소스는 검색 솔루션이 AI 생성 인사이트로 데이터 소스의 데이터를 보강하는 데 사용할 수 있는 기술에 대한 AI 서비스를 제공합니다.
 
-    > **참고** Azure Cognitive Search 및 Azure AI 서비스 리소스는 동일한 위치에 있어야 합니다.
+    > **참고** Azure Cognitive Search 및 Cognitive Services 리소스는 동일한 위치에 있어야 합니다.
 
 - Blob 컨테이너가 있는 **스토리지 계정**으로, 원시 문서와 기타 테이블, 개체 또는 파일 컬렉션을 저장합니다.
 
 ### *Azure Cognitive Search* 리소스 만들기
 
-1. 로그인은 [Azure 포털](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true)합니다.
+1. [Azure Portal](https://portal.azure.com/learn.docs.microsoft.com?azure-portal=true)에 로그인합니다.
 
 1. **＋ 리소스 만들기** 단추를 클릭하고, *Azure Cognitive Search*를 검색하고, 다음 설정을 통해 **Azure Cognitive Search** 리소스를 만듭니다.
 
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
-    - **서비스 이름**: 고유 이름
-    - **위치**: 사용 가능한 지역 선택
+    - **서비스 이름**: 고유 이름**
+    - **위치**: 사용 가능한 지역 선택**
     - **가격 책정 계층**: 기본
 
 1. **검토 + 만들기**를 선택하고 **유효성 검사 성공**이라는 응답이 표시되면 **만들기**를 선택합니다.
 
 1. 배포가 완료되면 **리소스로 이동**을 선택합니다. Azure Cognitive Search 개요 페이지에서 인덱스를 추가하고, 데이터를 가져오고, 만든 인덱스를 검색할 수 있습니다.
 
-### Azure AI 서비스 리소스 만들기
+### Azure AI 서비스 리소스를 생성합니다
 
-Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비스** 리소스를 프로비전해야 합니다. 검색 솔루션은 이 리소스를 사용하여 AI에서 생성된 인사이트를 사용하여 데이터 저장소의 데이터를 보강합니다.
+Azure Cognitive Search 리소스와 동일한 위치에 있는 **Cognitive Services** 리소스를 프로비전해야 합니다. 검색 솔루션은 이 리소스를 사용하여 AI에서 생성된 인사이트를 사용하여 데이터 저장소의 데이터를 보강합니다.
 
-1. Azure Portal 홈페이지로 돌아갑니다. **&#65291;리소스 만들기** 단추를 클릭하고 *Azure AI 서비스를 검색합니다*. **Azure AI 서비스** 계획 **만들기**를 선택합니다. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 구성합니다.
+1. Azure Portal의 홈으로 돌아갑니다. **65291을 클릭합니다. 리소스** 단추를 만들고 Azure AI 서비스를 검색*합니다*. Azure AI 서비스 계획 만들기****를** 선택합니다**. 페이지로 이동하여 Azure AI 서비스 리소스를 만듭니다. 다음 설정을 사용하여 PuTTY를 구성합니다.
     - **구독**: *자신의 Azure 구독*.
-    - **리소스 그룹**: Azure Cognitive Search 리소스와 동일한 리소스 그룹
-    - **지역**: Azure Cognitive Search 리소스와 동일한 지역
-    - **이름**: 고유 이름
+    - **리소스 그룹**: Azure Cognitive Search 리소스와 동일한 리소스 그룹**
+    - **지역**: Azure Cognitive Search 리소스와 동일한 지역**
+    - **이름**: 고유 이름**
     - **가격 책정 계층**: 표준 S0
     - **이 확인란 선택하여 아래의 모든 약관을 읽고 이해했음을 확인**: 선택하였습니다.
 
@@ -61,22 +61,22 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
 
 1. 배포가 완료될 때까지 기다렸다가 배포 세부 정보를 확인합니다.
 
-### 스토리지 계정 만들기
+### 저장소 계정 만들기
 
 1. Azure Portal 홈페이지로 돌아가서 **+ 리소스 만들기** 단추를 선택합니다.
 
 1. 스토리지 계정을 검색하고 다음 설정을 사용하여 **스토리지 계정** 리소스를 만듭니다.
     - **구독**: *자신의 Azure 구독*.
-    - **리소스 그룹**: *Azure Cognitive Search 및 Azure AI 서비스 리소스와 동일한 리소스 그룹입니다*.
-    - **스토리지 계정 이름**: 고유한 이름
-    - **위치**: 사용 가능한 위치 선택
+    - **리소스 그룹**: Azure Cognitive Search 리소스 및 Cognitive Services와 동일한 리소스 그룹**
+    - **스토리지 계정 이름**: 고유한 이름**
+    - **위치**: 사용 가능한 위치 선택**
     - **성능**: 표준
     - **중복도**: LRS(로컬 중복 스토리지)
 
 1. **검토**를 클릭한 다음, **만들기**를 클릭합니다. 배포가 완료될 때까지 기다린 다음, 배포된 리소스로 이동합니다.
 
-1. 만든 Azure Storage 계정의 왼쪽 메뉴 창에서 **구성** ( **설정** 아래)을 선택합니다.
-1. *Blob 익명 액세스 허용* 설정을 사용으로 변경**한** 다음 **, 저장**을 선택합니다.
+1. 만든 Azure Storage 계정의 왼쪽 메뉴 창에서 컨테이너를 선택합니다.
+1. Blob 익명 액세스 허용 설정을 *사용으로 변경한** 다음 저장**을 **선택합니다**.*
 
 ## Azure Storage에 문서 업로드
 
@@ -89,9 +89,9 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
 1. 다음 설정을 입력하고 **만들기**를 클릭합니다.
     - **이름**: coffee-reviews  
     - **공용 액세스 수준**: 컨테이너(컨테이너 및 Blob에 대한 익명 읽기 권한)
-    - **고급**: 변경 내용 없음
+    - **고급**: 변경 내용 없음**
 
-1. 새 브라우저 탭에서 https://aka.ms/km-documents 에서 압축된 문서를 다운로드한 다음, 검토 폴더에 파일을 추출합니다.
+1. 새 브라우저 탭에서 https://aka.ms/km-documents에서 압축된 문서를 다운로드한 다음, 검토 폴더에 파일을 추출합니다.**
 
 1. Azure Portal에서 *coffee-reviews* 컨테이너를 선택합니다. 컨테이너에서 **업로드**를 선택합니다.
 
@@ -114,19 +114,19 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
     ![데이터 가져오기 마법사를 보여 주는 스크린샷.](media/create-cognitive-search-solution/azure-search-wizard-1.png)
 
 1. **데이터에 연결** 페이지의 **데이터 원본**에서 **Azure Blob Storage**를 선택합니다. 다음 값을 사용하여 데이터 저장소 세부 정보를 완료합니다.
-    - **데이터 원본**: Azure Blob Storage
+    - 데이터 원본: Azure Blob Storage 선택
     - **데이터 원본 이름**: coffee-customer-data
     - **추출할 데이터**: 콘텐츠 및 메타데이터
     - **구문 분석 모드**: 기본값
     - **연결 문자열**: **기존 연결 선택**을 선택합니다. 스토리지 계정을 선택하고 **coffee-reviews** 컨테이너를 선택한 다음 **선택**을 클릭합니다.
     - **관리 ID 인증**: 없음
-    - **컨테이너 이름**: 기존 연결을 선택하면 이 설정은 자동으로 채워집니다.
-    - **Blob 폴더**: 비워둡니다.
+    - **컨테이너 이름**: 기존 연결을 선택하면 이 설정은 자동으로 채워집니다.**
+    - **Blob 폴더**: 비워둡니다.**
     - **설명**: Fourth Coffee 가게에 대한 리뷰.
 
 1. **다음: 인식 기술 추가(선택 사항)** 를 선택합니다.
 
-1. **Cognitive Services 연결** 섹션에서 Azure AI 서비스 리소스를 선택합니다.  
+1. **Cognitive Services 연결** 섹션에서 Cognitive Services 리소스를 선택합니다.  
 
 1. **보강 추가** 섹션에서 다음을 수행합니다.
     - **기술 세트 이름**을 **coffee-skillset** 변경합니다.
@@ -149,7 +149,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
     - 이미지 프로젝션
     - 문서
     - 페이지
-    - 키 구
+    - 핵심 구
     - 엔터티
     - 이미지 세부 정보
     - 이미지 참조
@@ -159,10 +159,10 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
     > !['기존 연결 선택'이 선택된 스토리지 계정 연결 화면 경고를 보여 주는 스크린샷.](media/create-cognitive-search-solution/6a-azure-cognitive-search-enrichments-warning.png)
     >
     > 1. **기존 연결 선택**을 선택합니다. 앞에서 만든 스토리지 계정을 선택합니다.
-    > 1. **+ 컨테이너**를 클릭하여 개인 정보 수준이 **프라이빗**으로 설정된 **지식 저장소**라는 새 컨테이너를 만들고 **만들기**를 선택합니다.
+    > 1. + 컨테이너를 클릭하여 개인 정보 수준이 프라이빗으로 설정된 knowledge-store라는 새 컨테이너를 만들고 만들기를 선택합니다.
     > 1. **knowledge-store** 컨테이너를 선택하고 화면 맨 아래에 있는 선택을 클릭합니다.
 
-1. **Azure Blob 프로젝션: 문서를** 선택합니다. *knowledge-store* 컨테이너가 자동으로 채워진 컨테이너 이름 설정이 표시됩니다. 컨테이너 이름을 변경하지 마세요.
+1. **Azure Blob 프로젝트: 문서**를 선택합니다. *knowledge-store* 컨테이너가 자동으로 채워진 컨테이너 이름 설정이 표시됩니다. 컨테이너 이름을 변경하지 마세요.
 
 1. **다음: 대상 인덱스 사용자 지정**을 선택합니다. **인덱스 이름**을 **coffee-index**로 변경합니다.
 
@@ -217,7 +217,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
 
 ## 지식 저장소 검토
 
-지식 저장소의 강력한 기능을 살펴보겠습니다. ‘데이터 가져오기 마법사’를 실행할 때 지식 저장소도 만들었습니다. 지식 저장소 내에서 AI 기술로 추출된 보강된 데이터가 프로젝션 및 테이블 형태로 유지되는 것을 알 수 있습니다.
+지식 저장소의 강력한 기능을 살펴보겠습니다. ‘데이터 가져오기 마법사’를 실행할 때 지식 저장소도 만들었습니다.** 지식 저장소 내에서 AI 기술로 추출된 보강된 데이터가 프로젝션 및 테이블 형태로 유지되는 것을 알 수 있습니다.
 
 1. Azure Portal에서 Azure Storage 계정으로 돌아갑니다.
 
@@ -233,7 +233,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
 
     ![편집 단추를 찾는 방법의 스크린샷.](media/create-cognitive-search-solution/knowledge-store-blob-2.png)
 
-1. 화면 왼쪽 위에 있는 스토리지 Blob 이동 경로를 선택하여 스토리지 계정 컨테이너로 돌아갑니다.
+1. 화면 왼쪽 위에 있는 스토리지 Blob 이동 경로를 선택하여 스토리지 계정 컨테이너로 돌아갑니다.**
 
     ![스토리지 Blob 이동 경로의 스크린샷.](media/create-cognitive-search-solution/knowledge-store-blob-4.png)
 
@@ -245,7 +245,7 @@ Azure Cognitive Search 리소스와 동일한 위치에 있는 **Azure AI 서비
 
     ![저장된 이미지의 스크린샷.](media/create-cognitive-search-solution/knowledge-store-blob-3.png)
 
-1. 화면 왼쪽 위에 있는 스토리지 Blob 이동 경로를 선택하여 스토리지 계정 컨테이너로 돌아갑니다.
+1. 화면 왼쪽 위에 있는 스토리지 Blob 이동 경로를 선택하여 스토리지 계정 컨테이너로 돌아갑니다.**
 
 1. 왼쪽 패널에서 **스토리지 브라우저**를 선택하고 **테이블**을 선택합니다. 인덱스의 각 엔터티에 대한 테이블이 있습니다. *coffeeSkillsetKeyPhrases* 테이블을 선택합니다.
 

@@ -1,12 +1,12 @@
 ---
 lab:
-  title: Bing Copilot를 사용하여 생성 AI 살펴보기
+  title: Bing에서 Copilot을 사용하여 생성 AI 살펴보기
 ---
 
-이 연습에서는 Bing Copilot를 사용하여 생성 AI를 살펴봅니다. 
+연습 - Bing Copilot를 사용하여 생성형 AI 살펴보기 
 
 ## 시작하기 전에
-개인 Microsoft 계정이 필요합니다. 없는 경우 signup.live.com[ 이동하여 ](https://signup.live.com/signup?azure-portal=true)등록합니다.
+개인 MSA(Microsoft 계정). 없는 경우 signup.live.com[ 이동하여 ](https://signup.live.com/signup?azure-portal=true)등록합니다.
 
 # Bing을 사용하여 생성 AI 살펴보기
 
@@ -14,7 +14,7 @@ lab:
 
 **참고**: 회사 또는 학교 계정으로 로그인할 수 있지만 개인 계정 로그인하는 것과는 약간 다른 사용자 환경이 표시됩니다. 회사 또는 학교 계정을 사용하면 Bing Enterprise 채팅이 표시됩니다. 
 
-1. 화면 맨 위에 있는 메뉴에서 채팅**을 선택합니다**. 채팅을 통해 Bing Copilot로 이동하여 생성 AI를 사용하여 검색 결과를 제공합니다. 즉, 기존 콘텐츠를 반환하는 검색과 달리 Bing Copilot는 자연어 모델링 및 웹 정보에 따라 새로운 응답을 결합할 수 있습니다.  
+1. 화면 상단의 메뉴에서 **내보내기**를 선택합니다. 채팅을 통해 Bing Copilot로 이동하여 생성 AI를 사용하여 검색 결과를 제공합니다. 즉, 기존 콘텐츠를 반환하는 검색과 달리 Bing Copilot는 자연어 모델링 및 웹 정보에 따라 새로운 응답을 결합할 수 있습니다.  
     
 1. 화면 아래쪽에 아무 것도** 묻는 창**이 표시됩니다. 창에 프롬프트를 입력할 때 Bing Copilot는 전체 대화 스레드를 사용하여 응답을 반환합니다. 예를 들어 여행에 대해 일련의 질문을 해 보겠습니다. 
 
@@ -34,7 +34,7 @@ lab:
 
 1. 채팅 창 옆의 **새 토픽 단추는 새 토픽** 응답이 이전 항목을 기반으로 하지 않도록 이전 대화 스레드를 지우는 데 유용한 Bing Copilot입니다. 채팅 창 옆에 있는 **새 토픽** 아이콘을 사용하여 메시지 기록을 지울 수 있습니다. 
 
-## 이미지 생성 시도
+## 이미지 세대
 
 1. 이제 이미지 생성의 예를 살펴보겠습니다. 프롬프트를 입력합니다 `Create an image of an elephant eating a hamburger`. Bing Copilot가 응답을 반환하기 전에 만들*려는 메시지가 *나타납니다. 
 
@@ -46,11 +46,11 @@ lab:
 
 1. 화면의 오른쪽 위 모서리에 있는 Microsoft Bing 아이콘을 클릭하여 Bing Copilot의 채팅으로 돌아갑니다. 
 
-## 코드 생성 시도
+## 잘못된 코드 생성
 
 1. 이제 코드 생성 및 번역의 예를 살펴보겠습니다. 프롬프트를 입력합니다 `Use Python to create a list`. 
 
-1. 프롬프트에 다음을 입력합니다 `Translate that into C#`. Bing Copilot가 대화 기록을 참조하는 것을 알고 있기 때문에 "그"가 무엇인지 지정할 필요가 없습니다. 
+1. 메시지가 표시되면 `Translate that into C#`를 입력합니다. Bing Copilot가 대화 기록을 참조하는 것을 알고 있기 때문에 "그"가 무엇인지 지정할 필요가 없습니다. 
 
 ## 보너스 
 
