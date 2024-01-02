@@ -52,7 +52,7 @@ lab:
 
 1. 메시지가 표시되면 `Translate that into C#`를 입력합니다. Bing Copilot가 대화 기록을 참조하는 것을 알고 있기 때문에 "그"가 무엇인지 지정할 필요가 없습니다. 
 
-## 보너스 
+## Bonus 
 
 1. 프롬프트를 입력합니다 `What are 3 examples of generative AI helping people?`. 당신은 당신의 자신의 부조종사 아이디어를 브레인 스토밍하는 방법으로 이것을 사용할 수 있습니다!  
 
