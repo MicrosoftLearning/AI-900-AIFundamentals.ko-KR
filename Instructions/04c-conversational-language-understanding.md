@@ -3,7 +3,7 @@ lab:
   title: 언어 이해 살펴보기
 ---
 
-# <a name="explore-language-understanding"></a>언어 이해 살펴보기
+# 언어 이해 살펴보기
 
 > **참고** 이 랩을 완료하려면 관리 액세스 권한이 있는 [Azure 구독](https://azure.microsoft.com/free?azure-portal=true)이 필요합니다.
 
@@ -11,7 +11,7 @@ lab:
 
 대화형 언어 이해 서비스의 기능을 테스트하기 위해 Cloud Shell에서 실행되는 명령줄 애플리케이션을 사용합니다. 웹 사이트 또는 휴대폰 앱과 같은 실제 솔루션에는 동일한 원칙과 기능이 적용됩니다.
 
-## <a name="create-a-language-service-resource"></a>언어 서비스 리소스 만들기
+## 언어 서비스 리소스 만들기
 
 **언어 서비스** 리소스를 만들어 대화형 언어 이해 서비스를 사용할 수 있습니다.
 
@@ -19,18 +19,18 @@ lab:
 
 1. 다른 브라우저 탭의 [https://portal.azure.com](https://portal.azure.com?azure-portal=true)에서 Azure Portal을 열고 Microsoft 계정을 사용하여 로그인합니다.
 
-1. **&#65291;리소스 만들기** 단추를 클릭하고 언어 서비스를 검색한 후 다음 설정을 사용하여 **언어 서비스** 리소스를 만듭니다.
+1. **&#65291;리소스 만들기** 단추를 클릭하고 언어 서비스를 검색한 후 다음 설정을 사용하여 **언어 서비스** 리소스를 만듭니다.**
     - 추가 기능 선택: 기본 기능을 유지하고 계속을 클릭하여 리소스를 만듭니다.  
     - **구독**: *자신의 Azure 구독*.
     - **리소스 그룹**: *고유한 이름이 있는 리소스 그룹을 선택하거나 생성*합니다.
     - **지역**: 미국 동부 2
-    - **이름**: *고유한 이름을 입력*합니다.
+    - **이름**: 고유한 이름을 입력합니다.
     - **가격 책정 계층**: S(분당 호출 1,000개)
     - **이 확인란을 선택하여 책임 있는 AI 알림의 조항을 검토하고 승인했음을 확인**: 선택하였습니다.
 
 1. 리소스를 검토 및 만들고 배포가 완료될 때까지 기다립니다.
 
-### <a name="create-a-conversational-language-understanding-app"></a>Conversational Language Understanding 앱 만들기
+### Conversational Language Understanding 앱 만들기
 
 Conversational Language Understanding을 통해 자연어 이해를 구현하려면 앱을 만든 다음, 엔터티, 의도, 발화를 추가하여 앱이 실행할 명령을 정의합니다.
 
@@ -50,20 +50,20 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 1. 포털 위쪽의 **새로 만들기** 메뉴에서 **대화형 언어 이해**을 선택합니다.
 
 1. **기본 정보 입력** 페이지의 **프로젝트 만들기** 대화 상자에 다음 세부 정보를 입력하고 **다음**을 클릭합니다.
-    - **이름**: 고유 이름 만들기
+    - **이름**: 고유 이름 만들기**
     - **설명**: 간단한 홈 자동화
     - **발화 기본 언어**: 영어
     - **프로젝트에서 여러 언어 사용**: 선택하지 마세요.
 
     ![프로젝트의 세부 정보를 입력합니다.](media/conversational-language-understanding/create-project.png)
 
-    >**팁** 프로젝트 이름을 적어 두세요. 나중에 사용할 수 있습니다.
+    >**팁** 프로젝트 이름을 적어 두세요. 나중에 사용할 수 있습니다.**
 
 1. 검토 및 완료 페이지에서 **만들기**를 클릭합니다.
 
-### <a name="create-intents-utterances-and-entities"></a>의도, 발화 및 엔터티 만들기
+### 의도, 발화 및 엔터티 만들기
 
-의도는 수행하려는 작업입니다. 예를 들어 조명을 켜거나 팬을 끌 수 있습니다. 이 경우 디바이스 켜기와 디바이스 쓰기의 두 가지 의도를 정의합니다. 각 의도에 대해 의도를 나타내는 데 사용되는 언어의 종류를 나타내는 샘플 *발화*를 지정합니다.
+의도는 수행하려는 작업입니다. 예를 들어 조명을 켜거나 팬을 끌 수 있습니다.** 이 경우 디바이스 켜기와 디바이스 쓰기의 두 가지 의도를 정의합니다. 각 의도에 대해 의도를 나타내는 데 사용되는 언어의 종류를 나타내는 샘플 *발화*를 지정합니다.
 
 1. **스키마 정의** 창에서 **의도**가 선택되었는지 확인합니다. 그런 다음, **추가**를 클릭하고, 이름이 **switch_on**(소문자)인 의도를 추가하고, **의도 추가**를 클릭합니다.
 
@@ -94,12 +94,12 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
     | **의도** | **발화** | **엔터티** |
     | --------------- | ------------------ | ------------------ |
-    | switch_on   | Put on the fan      | 디바이스 - 팬 선택 |
-    | switch_on   | Put on the light    | 디바이스 - 조명 선택 |
-    | switch_on   | Switch on the light | 디바이스 - 조명 선택 |
-    | switch_on   | Turn the fan on     | 디바이스 - 팬 선택 |
-    | switch_on   | Switch on the fan   | 디바이스 - 팬 선택 |
-    | switch_on   | Turn the light on   | 디바이스 - 조명 선택 |
+    | switch_on   | Put on the fan      | 디바이스 - 팬 선택** |
+    | switch_on   | Put on the light    | 디바이스 - 조명 선택** |
+    | switch_on   | Switch on the light | 디바이스 - 조명 선택** |
+    | switch_on   | Turn the fan on     | 디바이스 - 팬 선택** |
+    | switch_on   | Switch on the fan   | 디바이스 - 팬 선택** |
+    | switch_on   | Turn the light on   | 디바이스 - 조명 선택** |
 
     ![완료되면 변경 내용 저장을 선택합니다.](media/conversational-language-understanding/save-changes.png) 
 
@@ -120,37 +120,37 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
     | **의도** | **발화** | **엔터티** | 
     | --------------- | ------------------ | ------------------ |
-    | switch_off   | Put the fan off    | 디바이스 - 팬 선택 | 
-    | switch_off   | Put the light off  | 디바이스 - 조명 선택 |
-    | switch_off   | Turn off the light | 디바이스 - 조명 선택 |
-    | switch_off   | Switch the fan off | 디바이스 - 팬 선택 |
-    | switch_off   | Switch off the fan | 디바이스 - 팬 선택 |
-    | switch_off   | Turn the light off | 디바이스 - 조명 선택 |
+    | switch_off   | Put the fan off    | 디바이스 - 팬 선택** | 
+    | switch_off   | Put the light off  | 디바이스 - 조명 선택** |
+    | switch_off   | Turn off the light | 디바이스 - 조명 선택** |
+    | switch_off   | Switch the fan off | 디바이스 - 팬 선택** |
+    | switch_off   | Switch off the fan | 디바이스 - 팬 선택** |
+    | switch_off   | Turn the light off | 디바이스 - 조명 선택** |
 
-### <a name="train-the-model"></a>모델 학습
+### 모델 학습
 
 이제 앱에 Conversational Language 모델을 학습하기 위해 정의한 의도 및 엔터티를 사용할 준비가 되었습니다.
 
 1. Language Studio의 왼쪽에서 **학습 작업**을 선택한 다음, **학습 작업 시작**을 선택합니다. 다음 설정을 사용합니다. 
     - **새 모델 학습**: 선택하고 모델 이름을 선택합니다.
     - **학습 모드**: 표준 학습(무료)
-    - **데이터 분할**: 학습 데이터에서 테스트 세트 자동 분할 선택, 기본 백분율 유지
+    - **데이터 분할**: 학습 데이터에서 테스트 세트 자동 분할 선택, 기본 백분율 유지**
     - 페이지 아래쪽에서 **학습**을 클릭합니다.
 
 1. 학습이 완료되기를 기다립니다. 
 
-### <a name="deploy-and-test-the-model"></a>모델 배포 및 테스트
+### 모델 배포 및 테스트
 
 클라이언트 애플리케이션에서 학습된 모델을 사용하려면 클라이언트 애플리케이션이 새 발화를 보낼 수 있는 엔드포인트로 배포해야 합니다. 그러면 의도 및 엔터티를 예측할 수 있습니다.
 
 1. Language Studio의 왼쪽에서 **모델 배포**를 클릭합니다.
 
-1. 모델 이름을 선택하고 **배포 추가**를 클릭합니다. 다음 설정을 사용합니다.
-    - **기존 배포 이름 만들기 또는 선택**: 새 배포 이름 만들기 선택, 고유한 이름 추가
-    - **배포 이름에 학습된 모델 할당**: 학습된 모델의 이름 선택
+1. 모델 이름을 선택하고 **배포 추가**를 클릭합니다. 사용할 설정
+    - **기존 배포 이름 만들기 또는 선택**: 새 배포 이름 만들기 선택, 고유한 이름 추가**
+    - **배포 이름에 학습된 모델 할당**: 학습된 모델의 이름 선택**
     - **배포** 클릭
 
-    >**팁** 배포 이름을 적어 두세요. 나중에 사용할 수 있습니다. 
+    >**팁** 배포 이름을 적어 두세요. 나중에 사용할 수 있습니다.** 
 
 1. 모델이 배포되면 페이지 왼쪽에서 **배포 테스트**를 클릭한 다음, **배포 이름** 아래에서 배포된 모델을 선택합니다.
 
@@ -162,12 +162,12 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
     반환되는 결과를 검토합니다. 예측된 의도(**switch_on**) 및 예측된 엔터티(**device**)에 대해 모델이 계산한 확률을 나타내는 신뢰도 점수와 함께 예측된 의도 및 엔터티가 포함되는 것을 알 수 있습니다. JSON 탭은 각 잠재적 의도에 대한 비교 신뢰도를 표시합니다(신뢰도 점수가 가장 높은 것이 예측된 의도임).
 
-1. 텍스트 상자를 지우고 텍스트 입력 또는 텍스트 문서 업로드에서 다음 발화로 모델을 테스트합니다.
+1. 텍스트 상자를 지우고 텍스트 입력 또는 텍스트 문서 업로드에서 다음 발화로 모델을 테스트합니다.**
     - *팬 끄기*
     - *조명을 켜 둡니다.*
     - *팬을 끈 상태로 둡니다.*
 
-## <a name="run-cloud-shell"></a>Cloud Shell 실행
+## Cloud Shell 실행
 
 이제 배포된 모델을 사용해 보겠습니다. 이를 위해 Azure의 Cloud Shell에서 실행되는 명령줄 애플리케이션을 사용합니다. 
 
@@ -175,7 +175,7 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
 1. Azure Portal에서 검색 상자 오른쪽 페이지 맨 위에 있는 **[>_]**(*Cloud Shell*) 단추를 선택합니다. 이 단추를 클릭하면 포털 아래쪽에 Cloud Shell 창이 열립니다.
 
-    ![맨 위 검색 상자 오른쪽에 있는 아이콘을 클릭하여 Cloud Shell을 시작합니다.](media/conversational-language-understanding/powershell-portal-guide-1.png)
+    ![맨 위 검색 상자 오른쪽에 있는 아이콘을 클릭하여 Cloud Shell 시작](media/conversational-language-understanding/powershell-portal-guide-1.png)
 
 1. Cloud Shell을 처음 열면 사용할 셸 유형(*Bash* 또는 *PowerShell*)을 선택하라는 메시지가 표시될 수 있습니다. **PowerShell**을 선택합니다. 이 옵션이 표시되지 않으면 단계를 건너뜁니다.  
 
@@ -191,7 +191,7 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
     ![PowerShell이 시작될 때까지 기다립니다.](media/conversational-language-understanding/powershell-prompt.png) 
 
-## <a name="configure-and-run-a-client-application"></a>클라이언트 애플리케이션 구성 및 실행
+## 클라이언트 애플리케이션 구성 및 실행
 
 이제 클라이언트 애플리케이션을 실행할 미리 작성된 스크립트를 열고 편집해 보겠습니다.
 
@@ -257,6 +257,6 @@ Conversational Language Understanding을 통해 자연어 이해를 구현하려
 
 >**참고** 매번 **./understand.ps1**로 시작하고 구가 뒤따라야 합니다. 구 주위에 따옴표를 포함합니다.
 
-## <a name="learn-more"></a>자세한 정보
+## 자세한 정보
 
 이 간단한 앱은 언어 서비스의 대화형 언어 이해 기능 중 일부만 보여 줍니다. 이 서비스를 사용하여 수행할 수 있는 작업을 자세히 알아보려면 [Conversational Language Understanding 페이지](https://docs.microsoft.com/azure/cognitive-services/language-service/conversational-language-understanding/overview)를 참조하세요. 
