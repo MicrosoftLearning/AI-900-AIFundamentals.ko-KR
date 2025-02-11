@@ -1,3 +1,11 @@
+#README
+
+We've turned off the ability to report issues directly on this repo and do not monitor PRs.
+
+Provide feedback here: https://aka.ms/provide-feedback
+
+Or, if you are a trainer with a microsoft.com email address, please create a ticket in AzDO.
+
 # AI-900: Microsoft Azure AI Fundamentals
 
 >**중요**: AI-900에 대한 실습 작업을 위한 새로운 리포지토리가 만들어져 코스의 주요 새로 고침을 반영합니다. 앞으로 mslearn-ai-fundamentals를[ 사용](https://github.com/MicrosoftLearning/mslearn-ai-fundamentals)하세요. 이 리포지토리는 연말 전에 사용 중지됩니다. 
